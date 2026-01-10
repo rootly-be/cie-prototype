@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIE Enghien - Explorer & S'amuser</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Color Picker Sticker -->
+    <div class="color-picker-sticker">
+        <span>🎨 Couleur :</span>
+        <input type="color" id="themeColor" value="#88c425">
+    </div>
+
+    <!-- Header Wavy -->
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">🌿</div>
+                CIE Enghien
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle">🍔 Menu</button>
+
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="#home" class="nav-item">Accueil</a></li>
+                    <li><a href="#presentation" class="nav-item">Le CIE</a></li>
+                    <li><a href="#agenda" class="nav-item">Agenda</a></li>
+                    <li><a href="#activities" class="nav-item">Activités</a></li>
+                    <li><a href="#ideas" class="nav-item">Boîte à idées</a></li>
+                    <li><a href="#contact" class="nav-item contact-btn">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-wave">
+            <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffffff" fill-opacity="1" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="container hero-layout">
+                <div class="hero-text">
+                    <h1 class="bounce-in">La nature est notre terrain de jeu !</h1>
+                    <p>Bienvenue au CIE d'Enghien. Prêts pour l'aventure ?</p>
+                    <div class="hero-buttons">
+                        <a href="#activities" class="btn-fun btn-yellow">Nos Activités 🚀</a>
+                        <a href="#agenda" class="btn-fun btn-green">Agenda 📅</a>
+                    </div>
+                </div>
+                <div class="hero-img-container">
+                    <!-- Fun shape image -->
+                    <div class="blob-bg"></div>
+                    <img src="https://cieenghien.be/wp-content/uploads/2021/06/Image2bb.jpg" alt="Enfants Nature" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRO / PRESENTATION -->
+        <section id="presentation" class="section">
+            <div class="container">
+                <div class="paper-card">
+                    <div class="pin">📍</div>
+                    <h2>C'est quoi le CIE ?</h2>
+                    <p>Le <strong>Centre d'Initiation à l'Environnement</strong>, c'est l'endroit cool du Parc d'Enghien où l'on apprend à aimer la nature.</p>
+                    <p>On observe les petites bêtes, on plante des graines, et on comprend comment protéger notre belle planète !</p>
+                    <div class="gallery-fun">
+                        <img src="https://cieenghien.be/wp-content/uploads/2021/06/Image3bb.jpg" class="polaroid rotate-left">
+                        <img src="https://cieenghien.be/wp-content/uploads/2021/06/21b.jpg" class="polaroid rotate-right">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AGENDA -->
+        <section id="agenda" class="section">
+            <div class="container">
+                <h2 class="section-title">📅 Quoi de prévu ?</h2>
+                <div class="agenda-container">
+                    
+                    <div class="agenda-sticker">
+                        <div class="sticker-tape"></div>
+                        <div class="date-circle">
+                            <span class="d">12</span>
+                            <span class="m">Juil</span>
+                        </div>
+                        <h3>Balade Oiseaux 🐦</h3>
+                        <p>09:00 - 12:00</p>
+                        <button class="btn-mini">Je viens !</button>
+                    </div>
+
+                    <div class="agenda-sticker">
+                        <div class="sticker-tape"></div>
+                        <div class="date-circle warning">
+                            <span class="d">18</span>
+                            <span class="m">Juil</span>
+                        </div>
+                        <h3>Atelier Zéro Déchet ♻️</h3>
+                        <p>14:00 - 17:00</p>
+                        <button class="btn-mini">Je viens !</button>
+                    </div>
+
+                    <div class="agenda-sticker">
+                        <div class="sticker-tape"></div>
+                        <div class="date-circle night">
+                            <span class="d">25</span>
+                            <span class="m">Août</span>
+                        </div>
+                        <h3>Chauves-souris 🦇</h3>
+                        <p>20:00 - 23:00</p>
+                        <button class="btn-mini">Je viens !</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTIVITIES -->
+        <section id="activities" class="section bg-pattern">
+            <div class="container">
+                <h2 class="section-title">Nos Supers Activités</h2>
+                <div class="activities-flex">
+                    
+                    <div class="fun-card card-blue">
+                        <div class="card-icon">🏫</div>
+                        <h3>Pour l'École</h3>
+                        <p>Sorties scolaires inoubliables.</p>
+                    </div>
+
+                    <div class="fun-card card-orange">
+                        <div class="card-icon">🏕️</div>
+                        <h3>Stages Vacances</h3>
+                        <p>Aventures 100% nature.</p>
+                    </div>
+
+                    <div class="fun-card card-green">
+                        <div class="card-icon">👩‍🌾</div>
+                        <h3>Pour les Grands</h3>
+                        <p>Formations & Ateliers.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- IDEA BOX -->
+        <section id="ideas" class="section">
+            <div class="container">
+                <div class="idea-wrapper">
+                    <div class="idea-text">
+                        <h2>💡 Une idée géniale ?</h2>
+                        <p>Dis-nous ce qu'on devrait faire au CIE !</p>
+                    </div>
+                    <form class="fun-form" onsubmit="event.preventDefault(); alert('Super idée ! 🚀')">
+                        <textarea placeholder="Mon idée trop cool..."></textarea>
+                        <button type="submit" class="btn-fun btn-orange">Envoyer !</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUPPORT & CONTACT -->
+        <section id="contact" class="section footer-section">
+            <div class="footer-wave">
+                <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#ffffff" fill-opacity="1" d="M0,32L48,48C96,64,192,96,288,96C384,96,480,64,576,48C672,32,768,32,864,42.7C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                </svg>
+            </div>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="col-support">
+                        <h3>Nous soutenir ❤️</h3>
+                        <div class="piggy-bank">
+                            <p>BE12 3456 7890 1234</p>
+                        </div>
+                        <p>Chaque don compte !</p>
+                    </div>
+                    <div class="col-contact">
+                        <h3>Nous trouver 🗺️</h3>
+                        <p>Parc d'Enghien, Avenue Elisabeth</p>
+                        <p>info@cieenghien.be</p>
+                        <p>02 395 91 63</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
