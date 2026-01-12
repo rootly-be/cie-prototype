@@ -30,7 +30,9 @@
                 <a href="#activities">Activités</a>
                 <a href="#contact">Contact</a>
                 <a href="#support" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Nous Soutenir</a>
-                <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de thème">☀️</button>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de thème">
+                    <img src="img/sun.svg" alt="Mode thème" width="20" height="20">
+                </button>
             </div>
         </div>
     </nav>
@@ -80,14 +82,18 @@
                     
                     <div class="feature-list">
                         <div class="feature-item">
-                            <div class="feature-icon">🌿</div>
+                            <div class="feature-icon">
+                                <img src="img/leaf.svg" alt="Icône feuille" width="24" height="24">
+                            </div>
                             <div>
                                 <h4>Éducation relative à l'environnement</h4>
                                 <p style="font-size: 0.9rem; color: #666;">Des programmes adaptés aux socles de compétences pour tous les niveaux scolaires.</p>
                             </div>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🔍</div>
+                            <div class="feature-icon">
+                                <img src="img/search.svg" alt="Icône loupe" width="24" height="24">
+                            </div>
                             <div>
                                 <h4>Découverte Scientifique</h4>
                                 <p style="font-size: 0.9rem; color: #666;">Approche ludique et scientifique de la faune et de la flore locales.</p>
@@ -229,13 +235,33 @@
                     <p>Vous avez une question sur nos activités ou vous souhaitez organiser une visite ?</p>
                     
                     <div class="contact-details">
-                        <p><strong>📍 Adresse :</strong> Avenue Elisabeth, 7850 Enghien, Belgique</p>
-                        <p><strong>📧 Email :</strong> info@cieenghien.be</p>
-                        <p><strong>📞 Téléphone :</strong> +32 (0)2 395 91 63</p>
+                        <p style="display: flex; align-items: center; gap: 15px;">
+                            <span class="icon-circle">
+                                <img src="img/map-pin.svg" alt="Adresse" width="20" height="20">
+                            </span>
+                            <span>Avenue Elisabeth, 7850 Enghien, Belgique</span>
+                        </p>
+                        <p style="display: flex; align-items: center; gap: 15px;">
+                            <span class="icon-circle">
+                                <img src="img/mail.svg" alt="Email" width="20" height="20">
+                            </span>
+                            <span>info@cieenghien.be</span>
+                        </p>
+                        <p style="display: flex; align-items: center; gap: 15px;">
+                            <span class="icon-circle">
+                                <img src="img/phone.svg" alt="Téléphone" width="20" height="20">
+                            </span>
+                            <span>+32 (0)2 395 91 63</span>
+                        </p>
                     </div>
 
                     <div class="donation-badge" id="support">
-                        <h4>💚 Nous Soutenir</h4>
+                        <h4 style="display: flex; align-items: center; gap: 15px;">
+                            <span class="icon-circle">
+                                <img src="img/heart.svg" alt="Soutien" width="20" height="20">
+                            </span>
+                            <span>Nous Soutenir</span>
+                        </h4>
                         <p style="font-size: 0.9rem; margin-bottom: 10px;">Votre soutien est essentiel pour la préservation de la nature.</p>
                         <span class="iban">BE12 3456 7890 1234</span>
                         <small style="opacity: 0.7;">* Déductible fiscalement dès 40€</small>

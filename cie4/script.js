@@ -72,13 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Theme Toggle ---
     const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('img');
+    
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         
         if (document.body.classList.contains('dark-mode')) {
-            themeToggle.textContent = '🌙';
+            themeIcon.src = 'img/moon.svg';
         } else {
-            themeToggle.textContent = '☀️';
+            themeIcon.src = 'img/sun.svg';
         }
     });
 });
