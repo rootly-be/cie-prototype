@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations - CIE Enghien</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">CIE Enghien</a>
+
+            <button class="menu-toggle" aria-label="Menu">
+                <span>&#9776;</span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="cie.html">Le CIE</a>
+                <a href="animations.html">Animations</a>
+                <a href="formations.html" class="active">Formations</a>
+                <a href="agenda.html">Agenda</a>
+                <a href="stages.html">Stages</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html#soutenir" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Nous Soutenir</a>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de theme">
+                    <img src="img/sun.svg" alt="Mode theme" width="20" height="20">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>Formations</h1>
+            <p>Des formations pour approfondir vos connaissances sur l'environnement.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section">
+        <div class="container">
+            <div class="placeholder-content">
+                <div class="placeholder-icon">
+                    <img src="img/leaf.svg" alt="Feuille" width="60" height="60" style="opacity: 0.6;">
+                </div>
+                <h2>Bientot disponible</h2>
+                <p>Notre programme de formations est en cours de preparation. Revenez bientot pour decouvrir nos offres de formations pour adultes : jardinage ecologique, compostage, formation guide nature et bien plus encore.</p>
+
+                <div class="placeholder-actions">
+                    <p style="margin-bottom: 20px;">En attendant, restez informes de nos actualites :</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-primary">Nous contacter</a>
+                        <a href="agenda.html" class="btn btn-outline">Voir l'agenda</a>
+                    </div>
+                </div>
+
+                <div class="newsletter-inline" style="margin-top: 50px; padding: 30px; background: rgba(0,0,0,0.03); border-radius: var(--radius-md); max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <h4 style="margin-bottom: 15px;">Etre informe des nouvelles formations</h4>
+                    <form style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                        <input type="email" class="form-input" placeholder="Votre email..." style="flex: 1; min-width: 200px;">
+                        <button type="submit" class="btn btn-primary" style="padding: 12px 24px;" onclick="event.preventDefault(); alert('Inscription confirmee !')">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 CIE Enghien. Tous droits reserves.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .placeholder-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .placeholder-icon {
+            width: 120px;
+            height: 120px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+
+        body.dark-mode .placeholder-icon {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .placeholder-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .placeholder-content > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.85;
+            margin-bottom: 30px;
+        }
+
+        .placeholder-actions {
+            margin-top: 30px;
+        }
+    </style>
+</body>
+</html>

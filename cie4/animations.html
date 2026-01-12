@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations Scolaires - CIE Enghien</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">CIE Enghien</a>
+
+            <button class="menu-toggle" aria-label="Menu">
+                <span>&#9776;</span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="cie.html">Le CIE</a>
+                <a href="animations.html" class="active">Animations</a>
+                <a href="formations.html">Formations</a>
+                <a href="agenda.html">Agenda</a>
+                <a href="stages.html">Stages</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html#soutenir" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Nous Soutenir</a>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de theme">
+                    <img src="img/sun.svg" alt="Mode theme" width="20" height="20">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>Animations Scolaires</h1>
+            <p>De la maternelle au secondaire, des animations adaptees a chaque niveau.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section" style="padding-top: 20px;">
+        <div class="container">
+
+            <!-- Filtres par niveau -->
+            <div class="agenda-filters">
+                <button class="filter-btn active" data-filter="all">Tous les niveaux</button>
+                <button class="filter-btn" data-filter="m1">Maternelle Accueil/M1</button>
+                <button class="filter-btn" data-filter="m2m3">Maternelles M2/M3</button>
+                <button class="filter-btn" data-filter="primaires">Primaires</button>
+                <button class="filter-btn" data-filter="secondaires">Secondaires</button>
+            </div>
+
+            <!-- Introduction -->
+            <div class="intro-box" style="max-width: 800px; margin: 0 auto 50px; text-align: center; padding: 30px; background: rgba(0,0,0,0.03); border-radius: var(--radius-md);">
+                <p style="font-size: 1.1rem; line-height: 1.7;">Nos animations sont concues pour eveiller la curiosite des enfants et les reconnecter a la nature. Chaque programme est adapte a l'age et aux competences des eleves.</p>
+            </div>
+
+            <!-- SECTION: Maternelle Accueil/M1 -->
+            <section id="maternelle-m1" class="animation-section" data-level="m1">
+                <h2 class="level-title">
+                    <span class="level-badge">Accueil - M1</span>
+                    Maternelle Accueil/M1
+                </h2>
+                <p class="level-intro">Pour les plus petits, les animations proposees sont essentiellement composees de jeux libres dans notre zone d'ecole de dehors ou dans l'espace autour du CIE. Les activites seront adaptees au fil des saisons.</p>
+
+                <div class="animations-grid">
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Gaston le herisson</h3>
+                            <p class="animation-themes"><strong>Themes abordes :</strong> l'automne et l'hiver, le herisson, les animaux du parc d'Enghien, les 5 sens, etc.</p>
+                            <span class="animation-period">D'octobre a fevrier</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Rana la grenouille</h3>
+                            <p class="animation-themes"><strong>Themes abordes :</strong> le printemps et l'ete, les grenouilles, la vie de l'etang, l'eau, les couleurs, etc.</p>
+                            <span class="animation-period">De mars a juin</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Dorothee l'araignee</h3>
+                            <p class="animation-themes"><strong>Themes abordes :</strong> les araignees, les insectes, le land art, les animaux-artistes, etc.</p>
+                            <span class="animation-period">De septembre a juin</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Les P'tits Artistes</h3>
+                            <p class="animation-themes">Initiation au Land Art tout en decouvrant le monde fascinant des animaux qui creent des oeuvres etonnantes dans la nature. Activites ludiques et pratiques pour developper la creativite et la motricite fine.</p>
+                            <span class="animation-period">De septembre a juin</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SECTION: Maternelles M2/M3 -->
+            <section id="maternelle-m2m3" class="animation-section" data-level="m2m3">
+                <h2 class="level-title">
+                    <span class="level-badge">M2 - M3</span>
+                    Maternelles M2/M3
+                </h2>
+
+                <div class="animations-grid">
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Sauve qui pique !</h3>
+                            <p class="animation-themes">Les herissons, ces animaux plus vieux que les mammouths, sont sur le point de disparaitre ! Rejoins-moi au parc d'Enghien pour comprendre ces incroyables boules de piquants et les aider.</p>
+                            <span class="animation-period">De septembre a juin</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>L'arbre de grand-mere</h3>
+                            <p class="animation-themes">Arlette part a la recherche de son ami d'enfance Petit Gland, pourras-tu l'aider a le retrouver ?</p>
+                            <span class="animation-period">De septembre a decembre</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Les habitants de l'etang</h3>
+                            <p class="animation-themes">Qui sont ces incroyables animaux qui vivent sur, dans et autour de l'etang du miroir ? Viens le decouvrir par toi-meme.</p>
+                            <span class="animation-period">De septembre a juin</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>La vie d'un pissenlit</h3>
+                            <p class="animation-themes">Le temps d'une demi-journee, laissez-vous emporter par les aventures d'un de nos adores mal-aimes, Taraxacum, pour faire evoluer les mentalites sur les fameuses &laquo; mauvaises herbes &raquo; !</p>
+                            <span class="animation-period">De mars a juin et en septembre</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Le jardin de la sorciere blanche</h3>
+                            <p class="animation-themes">Une sorciere blanche, Hildegarde, doit realiser un plat pour la grande fete de la foret enchantee. Mais Cornebidouille !!! Son grimoire indique que seuls des enfants peuvent cueillir les plantes et les fleurs !!! Acceptez-vous d'aider Hildegarde ?</p>
+                            <span class="animation-period">De mars a juin et en septembre</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Les P'tits Artistes</h3>
+                            <p class="animation-themes">Initiation au Land Art tout en decouvrant le monde fascinant des animaux qui creent des oeuvres etonnantes dans la nature. Activites ludiques pour developper la creativite et sensibiliser a l'environnement.</p>
+                            <span class="animation-period">De septembre a juin</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SECTION: Primaires -->
+            <section id="primaires" class="animation-section" data-level="primaires">
+                <h2 class="level-title">
+                    <span class="level-badge">P1 - P6</span>
+                    Primaires
+                </h2>
+
+                <div class="animations-grid">
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>SOS etang du Miroir</h3>
+                            <p class="animation-themes">Suivez la libellule Anax et Sympetrum et devenez des experts de la faune des milieux humides !</p>
+                            <span class="animation-period">De mars a juin et en septembre</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Les bassins de Frasnes et leurs tresors</h3>
+                            <p class="animation-themes">Devenez les nouvelles recrues des agents speciaux et partez en mission recensement pour sauver les bassins !</p>
+                            <p class="animation-location"><em>Animation qui se deroule aux bassins de Frasnes (7911 Anvaing)</em></p>
+                            <span class="animation-period">De mars a juin et en septembre</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Le jardin de l'herboriste</h3>
+                            <p class="animation-themes">Au Moyen-age, l'herboriste huluberlue Hildegarde concocte un remede de plante pour soigner le Seigneur du chateau et la patatras... Tout ne se passe pas comme prevu. Apportez lui votre aide et decouvrez ses precieux secrets sur les plantes.</p>
+                            <span class="animation-period">De mars a juin et en septembre</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Les chauves-souris, les reines de la nuit !</h3>
+                            <p class="animation-themes">Qui sont-elles et pourquoi nous fascinent-elles ? Rejoins-nous pour le decouvrir et qui sait, peut-etre aurons-nous la chance d'en apercevoir une ?</p>
+                            <p class="animation-location"><em>Souterrain ouvert d'avril a juin et en septembre</em></p>
+                            <span class="animation-period">Toute l'annee</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>A la recherche des herissons</h3>
+                            <p class="animation-themes">Devenez les assistants du detective Charlotte Holmes et resolvez ensemble le mystere de la disparition des herissons !</p>
+                            <span class="animation-period">De septembre a juin</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Le monde mysterieux des champignons</h3>
+                            <p class="animation-themes">Partez en balade avec le celebre mycologue du parc et decouvrez avec lui la diversite incroyable de ces droles d'etres vivants.</p>
+                            <span class="animation-period">D'octobre a novembre</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>La vie d'un pissenlit</h3>
+                            <p class="animation-themes">Le temps d'une demi-journee, laissez-vous emporter dans la vie incroyable d'un de nos adores mal-aimes, Taraxacum, et participez au Grand Changement des mentalites sur ces fameuses &laquo; mauvaises herbes &raquo; !</p>
+                            <span class="animation-period">De mars a juin</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SECTION: Secondaires -->
+            <section id="secondaires" class="animation-section" data-level="secondaires">
+                <h2 class="level-title">
+                    <span class="level-badge">S1 - S6</span>
+                    Secondaires
+                </h2>
+
+                <div class="animations-grid">
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Ecosysteme, on seme !</h3>
+                            <p class="animation-level-detail"><strong>5eme et 6eme primaire</strong></p>
+                            <p class="animation-themes">Decouvrez, en pratique, ce qu'est un ecosysteme et les differents ecosystemes qui peuvent exister au sein du parc d'Enghien. Durant cette animation, les jeunes s'exerceront a reconnaitre des ecosystemes, a les identifier et comprendre l'impact que les activites humaines peuvent avoir sur ces derniers.</p>
+                            <span class="animation-period">Toute l'annee</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>Un arbre mort, vraiment ?</h3>
+                            <p class="animation-level-detail"><strong>4eme, 5eme et 6eme</strong></p>
+                            <p class="animation-themes">Decouverte de l'ecosysteme de l'arbre mort. Pourquoi est-ce qu'un arbre mort est un ecosysteme a part entiere, un veritable hotel 5 etoiles pour la nature ? En quoi les arbres morts sont essentiels pour un bon nombre d'etres vivants ?</p>
+                            <span class="animation-period">Toute l'annee</span>
+                        </div>
+                    </article>
+
+                    <article class="animation-card">
+                        <div class="animation-img" style="background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);"></div>
+                        <div class="animation-content">
+                            <h3>La reine de la nuit, les chauves-souris !</h3>
+                            <p class="animation-themes">Decouverte des chauves-souris. Qui sont-elles et pourquoi nous fascinent-elles ? Visite du souterrain.</p>
+                            <p class="animation-location"><em>Souterrain accessible d'avril a juin et en septembre</em></p>
+                            <span class="animation-period">Toute l'annee</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <div class="cta-box" style="margin-top: 60px; text-align: center; padding: 50px 30px; background: var(--color-btn-bg); border-radius: var(--radius-md); color: white;">
+                <h3 style="color: white; font-size: 1.8rem; margin-bottom: 15px;">Interessé par nos animations ?</h3>
+                <p style="margin-bottom: 25px; opacity: 0.9; max-width: 500px; margin-left: auto; margin-right: auto;">Contactez-nous pour organiser une visite avec votre classe ou obtenir plus d'informations.</p>
+                <a href="contact.html" class="btn" style="background: white; color: var(--color-btn-bg);">Nous contacter</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 CIE Enghien. Tous droits reserves.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Filtrage des sections par niveau
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const sections = document.querySelectorAll('.animation-section');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    sections.forEach(section => {
+                        if (filter === 'all' || section.getAttribute('data-level') === filter) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <style>
+        /* Styles specifiques a la page animations */
+        .animation-section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-main);
+        }
+
+        .animation-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .level-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .level-badge {
+            background: var(--color-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .level-intro {
+            max-width: 800px;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        .animations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .animation-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-main);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .animation-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+        }
+
+        .animation-img {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .animation-content {
+            padding: 20px;
+        }
+
+        .animation-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .animation-themes {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0.85;
+        }
+
+        .animation-location {
+            font-size: 0.9rem;
+            color: var(--color-icon);
+            margin-bottom: 10px;
+        }
+
+        .animation-level-detail {
+            font-size: 0.9rem;
+            color: var(--color-detail);
+            margin-bottom: 10px;
+        }
+
+        .animation-period {
+            display: inline-block;
+            background: rgba(0,0,0,0.05);
+            color: var(--color-detail);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        body.dark-mode .animation-period {
+            background: rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .animations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .agenda-filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</body>
+</html>

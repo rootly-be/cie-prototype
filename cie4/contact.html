@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - CIE Enghien</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">CIE Enghien</a>
+
+            <button class="menu-toggle" aria-label="Menu">
+                <span>&#9776;</span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="cie.html">Le CIE</a>
+                <a href="animations.html">Animations</a>
+                <a href="formations.html">Formations</a>
+                <a href="agenda.html">Agenda</a>
+                <a href="stages.html">Stages</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="#soutenir" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Nous Soutenir</a>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de theme">
+                    <img src="img/sun.svg" alt="Mode theme" width="20" height="20">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>Contact</h1>
+            <p>Restons en contact, nous sommes a votre ecoute.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section" style="padding-top: 20px;">
+        <div class="container">
+
+            <div class="contact-page-grid">
+
+                <!-- Contact Info Column -->
+                <div class="contact-info-page">
+                    <h2>Nos coordonnees</h2>
+
+                    <div class="contact-details-page">
+                        <div class="contact-item">
+                            <span class="icon-circle-page">
+                                <img src="img/map-pin.svg" alt="Adresse" width="20" height="20">
+                            </span>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>Parc 6, 7850 Enghien, Belgique</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="icon-circle-page">
+                                <img src="img/phone.svg" alt="Telephone" width="20" height="20">
+                            </span>
+                            <div>
+                                <h4>Telephone</h4>
+                                <p>+32 (0)2 3959789</p>
+                                <p>0497 24 34 86</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="icon-circle-page">
+                                <img src="img/mail.svg" alt="Email" width="20" height="20">
+                            </span>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:contact@cieenghien.be" style="color: var(--color-primary);">contact@cieenghien.be</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reseaux sociaux -->
+                    <div class="social-links" style="margin-top: 30px;">
+                        <h4 style="margin-bottom: 15px;">Suivez-nous</h4>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" class="social-btn" style="width: 45px; height: 45px; border-radius: 50%; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;" aria-label="Facebook">f</a>
+                            <a href="#" class="social-btn" style="width: 45px; height: 45px; border-radius: 50%; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;" aria-label="Instagram">in</a>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="newsletter-box" style="margin-top: 40px; padding: 25px; background: rgba(0,0,0,0.03); border-radius: var(--radius-md); border-left: 4px solid var(--color-accent);">
+                        <h4 style="margin-bottom: 10px;">Newsletter</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 15px; opacity: 0.8;">Pour recevoir notre newsletter et etre informes de toutes nos activites.</p>
+                        <form style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <input type="email" class="form-input" placeholder="Votre email..." style="flex: 1; min-width: 200px;">
+                            <button type="submit" class="btn btn-primary" style="padding: 12px 24px;" onclick="event.preventDefault(); alert('Inscription confirmee !')">S'inscrire</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="form-box">
+                    <h3 style="color: var(--color-primary); margin-bottom: 20px;">Envoyez-nous un message</h3>
+                    <form onsubmit="event.preventDefault(); alert('Message envoye avec succes !')">
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Nom complet</label>
+                            <input type="text" class="form-input" placeholder="Votre nom">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Email</label>
+                            <input type="email" class="form-input" placeholder="votre@email.com">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Sujet</label>
+                            <select class="form-input">
+                                <option>Renseignement general</option>
+                                <option>Inscription Scolaire</option>
+                                <option>Inscription Stage</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Message</label>
+                            <textarea class="form-input" rows="5" placeholder="Bonjour..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le message</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Section Nous Soutenir -->
+    <section id="soutenir" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nous Soutenir</h2>
+                <p>Votre soutien nous permet de poursuivre notre mission de sensibilisation a l'environnement.</p>
+            </div>
+
+            <div class="support-grid">
+                <!-- Pourquoi nous soutenir -->
+                <div class="support-card">
+                    <div class="support-icon" style="width: 60px; height: 60px; background: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <img src="img/heart.svg" alt="Coeur" width="28" height="28" style="filter: brightness(0) invert(1);">
+                    </div>
+                    <h3>Pourquoi nous soutenir ?</h3>
+                    <p>En nous soutenant, vous contribuez directement a la poursuite de nos projets de sensibilisation a l'environnement, destines a un public varie sur l'ensemble du territoire wallon. Votre appui nous permet d'avoir un impact concret et durable.</p>
+                </div>
+
+                <!-- Comment nous soutenir -->
+                <div class="support-card">
+                    <h3 style="margin-bottom: 20px;">Comment nous soutenir ?</h3>
+
+                    <div class="support-method" style="margin-bottom: 20px; padding: 20px; background: rgba(0,0,0,0.03); border-radius: var(--radius-sm);">
+                        <h4 style="color: var(--color-primary); margin-bottom: 8px;">Faire un don</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 10px;">Vous pouvez nous soutenir financierement sur le compte :</p>
+                        <span style="font-family: monospace; font-size: 1.1rem; font-weight: 700; color: var(--color-primary); background: rgba(0,0,0,0.05); padding: 8px 15px; border-radius: 5px; display: inline-block;">BE11-0013-3971-0648</span>
+                    </div>
+
+                    <div class="support-method" style="margin-bottom: 20px; padding: 20px; background: rgba(0,0,0,0.03); border-radius: var(--radius-sm);">
+                        <h4 style="color: var(--color-primary); margin-bottom: 8px;">Donner de votre temps</h4>
+                        <p style="font-size: 0.95rem;">Contactez-nous si vous souhaitez participer en tant que benevole.</p>
+                    </div>
+
+                    <div class="support-method" style="padding: 20px; background: rgba(0,0,0,0.03); border-radius: var(--radius-sm);">
+                        <h4 style="color: var(--color-primary); margin-bottom: 8px;">Partager et promouvoir</h4>
+                        <p style="font-size: 0.95rem;">Parlez de nos actions autour de vous et sur vos reseaux.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 CIE Enghien. Tous droits reserves.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        /* Styles specifiques a la page contact */
+        .contact-page-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info-page h2 {
+            margin-bottom: 30px;
+        }
+
+        .contact-details-page {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            font-family: var(--font-body);
+        }
+
+        .contact-item p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .icon-circle-page {
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        body.dark-mode .icon-circle-page {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .support-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+        }
+
+        .support-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .support-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 768px) {
+            .contact-page-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
