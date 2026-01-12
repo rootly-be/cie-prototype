@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIE Enghien - Centre d'Initiation à l'Environnement</title>
+    
+    <!-- Fonts: Playfair Display (Serif) + Inter (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">CIE Enghien</a>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <span>☰</span>
+            </button>
+
+            <div class="nav-links">
+                <a href="#home">Accueil</a>
+                <a href="#presentation">Le CIE</a>
+                <a href="#agenda">Agenda</a>
+                <a href="#activities">Activités</a>
+                <a href="#contact">Contact</a>
+                <a href="#support" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Nous Soutenir</a>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de thème">☀️</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Reconnecter l'humain à la nature</h1>
+            <p>Au cœur du Parc d'Enghien, découvrez, apprenez et émerveillez-vous devant la biodiversité qui nous entoure.</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#agenda" class="btn btn-primary">Voir l'agenda</a>
+                <a href="#presentation" class="btn btn-outline" style="color: white; border-color: white;">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>+20 ans</h3>
+                    <p>d'Expérience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>3000+</h3>
+                    <p>Participants / an</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Passion Nature</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Presentation Section -->
+    <section id="presentation" class="section">
+        <div class="container">
+            <div class="presentation-grid">
+                <div class="text-content">
+                    <h4 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #999; margin-bottom: 10px; font-family: var(--font-body);">Notre Mission</h4>
+                    <h2>Comprendre pour mieux protéger</h2>
+                    <p style="margin-bottom: 20px;">Le <strong>Centre d'Initiation à l'Environnement (CIE)</strong> d'Enghien est une ASBL dédiée à la sensibilisation à la nature. Situés dans le cadre exceptionnel du parc d'Enghien, nous proposons des activités pour les écoles, les familles et tous les curieux.</p>
+                    <p>Notre approche pédagogique privilégie le contact direct avec le vivant, l'observation et l'expérimentation.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">🌿</div>
+                            <div>
+                                <h4>Éducation relative à l'environnement</h4>
+                                <p style="font-size: 0.9rem; color: #666;">Des programmes adaptés aux socles de compétences pour tous les niveaux scolaires.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔍</div>
+                            <div>
+                                <h4>Découverte Scientifique</h4>
+                                <p style="font-size: 0.9rem; color: #666;">Approche ludique et scientifique de la faune et de la flore locales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="presentation-img">
+                    <img src="https://cieenghien.be/wp-content/uploads/2021/06/Image3bb.jpg" alt="Enfants Nature">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agenda Section -->
+    <section id="agenda" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>L'Agenda du CIE</h2>
+                <p>Nos prochaines balades, ateliers et événements.</p>
+            </div>
+            
+            <div class="agenda-list">
+                <!-- Event 1 -->
+                <article class="agenda-item">
+                    <div class="date-box">
+                        <span class="day">12</span>
+                        <span class="month">Juil</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Balade Ornithologique</h3>
+                        <p><span>🕒 09:00 - 12:00</span> <span>📍 Parc d'Enghien</span></p>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+
+                <!-- Event 2 -->
+                <article class="agenda-item">
+                    <div class="date-box">
+                        <span class="day">18</span>
+                        <span class="month">Juil</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Atelier "Zéro Déchet"</h3>
+                        <p><span>🕒 14:00 - 17:00</span> <span>📍 Pavillon CIE</span></p>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+
+                <!-- Event 3 -->
+                <article class="agenda-item">
+                    <div class="date-box" style="background-color: #1e3d2b;"> <!-- Darker variant -->
+                        <span class="day">25</span>
+                        <span class="month">Août</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Nuit des Chauves-souris</h3>
+                        <p><span>🕒 20:00 - 23:00</span> <span>📍 Parc d'Enghien</span></p>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="agenda.html" style="color: var(--primary-color); font-weight: 600; text-decoration: underline;">Voir tout l'agenda &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Pôles d'Activités</h2>
+                <p>Une offre variée pour tous les publics.</p>
+            </div>
+            
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://cieenghien.be/wp-content/uploads/2021/06/21b.jpg" alt="Scolaire">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Scolaires</h3>
+                        <p>De la maternelle au secondaire, des animations en lien avec les programmes scolaires pour découvrir la nature autrement.</p>
+                        <br>
+                        <a href="#" style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Découvrir les programmes &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://cieenghien.be/wp-content/uploads/2021/06/Image5b.jpg" alt="Stages">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Stages Vacances</h3>
+                        <p>Durant les congés scolaires, nous accueillons vos enfants pour des semaines d'aventures, de jeux et de découvertes.</p>
+                        <br>
+                        <a href="#" style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Voir les prochains stages &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <!-- Placeholder image logic or reuse -->
+                        <img src="https://cieenghien.be/wp-content/uploads/2021/06/Image2bb.jpg" alt="Adultes">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Formations Adultes</h3>
+                        <p>Jardinage écologique, compostage, formation guide nature... Il n'y a pas d'âge pour apprendre !</p>
+                        <br>
+                        <a href="#" style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">En savoir plus &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideas Box (Light section before footer) -->
+    <section id="ideas" class="section bg-light">
+        <div class="container text-center">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Une idée ? Une suggestion ?</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px; color: #666;">La boîte à idées est ouverte ! Aidez-nous à améliorer le CIE.</p>
+            <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                <input type="text" class="form-input" placeholder="Votre idée en quelques mots..." style="flex-grow: 1;">
+                <button type="submit" class="btn btn-primary" onclick="event.preventDefault(); alert('Merci pour votre suggestion !')">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Support & Contact Combined -->
+    <section id="contact" class="contact-support-wrapper">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <!-- Contact Info Column -->
+                <div class="contact-info">
+                    <h2>Restons en contact</h2>
+                    <p>Vous avez une question sur nos activités ou vous souhaitez organiser une visite ?</p>
+                    
+                    <div class="contact-details">
+                        <p><strong>📍 Adresse :</strong> Avenue Elisabeth, 7850 Enghien, Belgique</p>
+                        <p><strong>📧 Email :</strong> info@cieenghien.be</p>
+                        <p><strong>📞 Téléphone :</strong> +32 (0)2 395 91 63</p>
+                    </div>
+
+                    <div class="donation-badge" id="support">
+                        <h4>💚 Nous Soutenir</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 10px;">Votre soutien est essentiel pour la préservation de la nature.</p>
+                        <span class="iban">BE12 3456 7890 1234</span>
+                        <small style="opacity: 0.7;">* Déductible fiscalement dès 40€</small>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="form-box">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">Envoyez-nous un message</h3>
+                    <form onsubmit="event.preventDefault(); alert('Message envoyé avec succès !')">
+                        <div class="form-group">
+                            <label>Nom complet</label>
+                            <input type="text" class="form-input" placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-input" placeholder="votre@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Sujet</label>
+                            <select class="form-input">
+                                <option>Renseignement général</option>
+                                <option>Inscription Scolaire</option>
+                                <option>Inscription Stage</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-input" rows="4" placeholder="Bonjour..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 CIE Enghien. Tous droits réservés. | <a href="#" style="text-decoration: underline;">Mentions Légales</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

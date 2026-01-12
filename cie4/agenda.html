@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda complet - CIE Enghien</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">CIE Enghien</a>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <span>☰</span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="index.html#presentation">Le CIE</a>
+                <a href="#" class="active">Agenda</a>
+                <a href="index.html#activities">Activités</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="index.html#support" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Nous Soutenir</a>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de thème">☀️</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>Agenda 2026</h1>
+            <p>Retrouvez toutes nos activités nature, stages et formations.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section" style="padding-top: 20px;">
+        <div class="container">
+            
+            <!-- Filters -->
+            <div class="agenda-filters">
+                <button class="filter-btn active">Tout voir</button>
+                <button class="filter-btn">Familles</button>
+                <button class="filter-btn">Adultes</button>
+                <button class="filter-btn">Scolaire</button>
+                <button class="filter-btn">Stages</button>
+            </div>
+
+            <div class="agenda-list">
+                
+                <!-- MOIS: JUILLET -->
+                <div style="padding: 0 30px;">
+                    <h3 class="month-heading">Juillet 2026</h3>
+                </div>
+
+                <article class="agenda-item">
+                    <div class="date-box">
+                        <span class="day">12</span>
+                        <span class="month">Juil</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Balade Ornithologique</h3>
+                        <p><span>🕒 09:00 - 12:00</span> <span>📍 Parc d'Enghien</span></p>
+                        <span class="event-tag">Adultes & Familles</span>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+
+                <article class="agenda-item">
+                    <div class="date-box">
+                        <span class="day">18</span>
+                        <span class="month">Juil</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Atelier "Zéro Déchet"</h3>
+                        <p><span>🕒 14:00 - 17:00</span> <span>📍 Pavillon CIE</span></p>
+                        <span class="event-tag">Adultes</span>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+
+                 <!-- MOIS: AOÛT -->
+                 <div style="padding: 0 30px; margin-top: 20px;">
+                    <h3 class="month-heading">Août 2026</h3>
+                </div>
+
+                <article class="agenda-item">
+                    <div class="date-box" style="background-color: #1e3d2b;">
+                        <span class="day">25</span>
+                        <span class="month">Août</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Nuit des Chauves-souris</h3>
+                        <p><span>🕒 20:00 - 23:00</span> <span>📍 Parc d'Enghien</span></p>
+                        <span class="event-tag">Tout Public</span>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+
+                <article class="agenda-item">
+                    <div class="date-box">
+                        <span class="day">28</span>
+                        <span class="month">Août</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Stage "Petits Explorateurs"</h3>
+                        <p><span>🕒 5 jours (09:00 - 16:00)</span> <span>📍 Parc d'Enghien</span></p>
+                        <span class="event-tag">Enfants 6-9 ans</span>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">Complet</a>
+                </article>
+
+                <!-- MOIS: SEPTEMBRE -->
+                <div style="padding: 0 30px; margin-top: 20px;">
+                    <h3 class="month-heading">Septembre 2026</h3>
+                </div>
+
+                <article class="agenda-item">
+                    <div class="date-box">
+                        <span class="day">15</span>
+                        <span class="month">Sept</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Écoute du Brame du Cerf</h3>
+                        <p><span>🕒 19:00 - 21:30</span> <span>📍 Bois d'Enghien</span></p>
+                        <span class="event-tag">Adultes</span>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+                 <article class="agenda-item">
+                    <div class="date-box">
+                        <span class="day">22</span>
+                        <span class="month">Sept</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Cuisine Sauvage d'Automne</h3>
+                        <p><span>🕒 10:00 - 14:00</span> <span>📍 Pavillon CIE</span></p>
+                        <span class="event-tag">Atelier culinaire</span>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">S'inscrire</a>
+                </article>
+
+            </div>
+            
+            <!-- Pagination (Visual) -->
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="#" class="btn btn-outline" style="opacity: 0.5; cursor: not-allowed;">&larr; Précédent</a>
+                <a href="#" class="btn btn-outline">Suivant &rarr;</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 CIE Enghien. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

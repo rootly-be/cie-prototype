@@ -1,0 +1,463 @@
+:root {
+    /* =========================================
+       1. DEFINITION DES PALETTES (SOURCE)
+       ========================================= */
+    
+    /* --- PALETTE MODE CLAIR (Nature Profonde) --- */
+    --L-sapin: #1a4a26;      /* Dominant: Titres, Boutons */
+    --L-feuille: #649a4f;    /* Secondaire: Hover, Accents */
+    --L-ecorce: #8d5524;     /* Détails: Texte riche */
+    --L-eau: #4a8db7;        /* Accents: Icônes */
+    --L-bg: #fdfcf8;         /* Blanc cassé chaud */
+    --L-surface: #ffffff;    /* Blanc pur */
+    --L-text: #2c3e50;       /* Gris foncé lisible */
+    --L-border: #e0e0e0;
+
+    /* --- PALETTE MODE SOMBRE (Nature Lumineuse) --- */
+    --D-sapin-text: #a5d6a7; /* Vert Menthe: Pour les TITRES (lisibilité) */
+    --D-sapin-btn: #2e7d32;  /* Vert Solide: Pour les BOUTONS (contraste blanc) */
+    --D-feuille: #81c784;    /* Vert Tendre: Accents */
+    --D-ecorce: #e6ceb9;     /* Beige Sable: Remplace le brun (lisibilité sur noir) */
+    --D-eau: #81d4fa;        /* Bleu Ciel: Icônes lumineuses */
+    --D-bg: #121212;         /* Noir profond */
+    --D-surface: #1e1e1e;    /* Gris anthracite */
+    --D-text: #e0e0e0;       /* Blanc cassé */
+    --D-border: #333333;
+
+    /* =========================================
+       2. MAPPAGE VARIABLES ACTIVES (Défaut: Clair)
+       ========================================= */
+    --color-primary: var(--L-sapin);       /* Titres, Marque */
+    --color-btn-bg: var(--L-sapin);        /* Fond boutons */
+    --color-accent: var(--L-feuille);      /* Hovers, Bordures actives */
+    --color-detail: var(--L-ecorce);       /* Dates, Stats */
+    --color-icon: var(--L-eau);            /* Icônes */
+    
+    --bg-body: var(--L-bg);
+    --bg-card: var(--L-surface);
+    --bg-input: #ffffff;
+    
+    --text-main: var(--L-text);
+    --text-heading: var(--L-sapin);
+    --text-inverse: #ffffff;
+    
+    --border-main: var(--L-border);
+    --shadow-card: 0 4px 20px rgba(26, 74, 38, 0.08);
+
+    /* --- Echelle Typographique (Mobile First) --- */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --text-xs: 0.85rem;
+    --text-sm: 0.95rem;
+    --text-base: 1.05rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+    --heading-sm: 2rem;
+    --heading-md: 2.5rem;
+    --heading-lg: 3rem;
+    
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 30px;
+}
+
+/* Desktop Typography Override */
+@media (min-width: 1025px) {
+    :root {
+        --text-base: 1.1rem;
+        --heading-lg: 4.5rem;
+        --heading-md: 3rem;
+    }
+}
+
+/* =========================================
+   3. MAPPAGE MODE SOMBRE
+   ========================================= */
+body.dark-mode {
+    --color-primary: var(--D-sapin-text);  /* Titres clairs */
+    --color-btn-bg: var(--D-sapin-btn);    /* Boutons solides */
+    --color-accent: var(--D-feuille);
+    --color-detail: var(--D-ecorce);       /* Beige lisible */
+    --color-icon: var(--D-eau);
+    
+    --bg-body: var(--D-bg);
+    --bg-card: var(--D-surface);
+    --bg-input: #2c2c2c;
+    
+    --text-main: var(--D-text);
+    --text-heading: var(--D-sapin-text);
+    --text-inverse: #ffffff;
+    
+    --border-main: var(--D-border);
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   4. BASE STYLES
+   ========================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--text-main);
+    background-color: var(--bg-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Images en mode sombre : Réduction de la luminosité pour éviter l'éblouissement */
+body.dark-mode img {
+    filter: brightness(0.85);
+    transition: filter 0.3s;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 { font-size: var(--heading-lg); }
+h2 { font-size: var(--heading-md); }
+h3 { font-size: var(--heading-sm); }
+h4 { font-size: var(--text-xl); }
+
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+
+/* Utilities */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+.bg-light { background-color: rgba(0,0,0,0.03); } /* Works in both modes */
+.text-center { text-align: center; }
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: var(--text-base);
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--color-btn-bg);
+    color: var(--text-inverse) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.btn-outline {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--color-primary);
+    color: var(--bg-body); /* Adaptatif: Blanc en Light, Noir en Dark */
+}
+
+/* =========================================
+   5. COMPONENTS
+   ========================================= */
+
+/* Navbar */
+.navbar {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    padding: 20px 0; transition: all 0.4s ease; background: transparent;
+}
+
+.navbar.scrolled {
+    background: var(--bg-card); /* Devient couleur carte (Blanc ou Gris Foncé) */
+    box-shadow: 0 2px 20px var(--shadow-card);
+    padding: 15px 0;
+}
+
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+
+/* Logo: Blanc sur Hero, Couleur sur Scrolled */
+.logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: white; }
+.navbar.scrolled .logo { color: var(--text-heading); }
+
+/* Links */
+.nav-links { display: flex; gap: 32px; align-items: center; }
+
+.nav-links a:not(.btn) {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: var(--text-base);
+}
+
+.nav-links a.active:not(.btn) {
+    color: white !important;
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-accent);
+}
+
+/* Scrolled Navbar Links */
+.navbar.scrolled .nav-links a:not(.btn) { color: var(--text-main); }
+.navbar.scrolled .nav-links a:not(.btn):hover { color: var(--color-accent); }
+.navbar.scrolled .nav-links a.btn-primary { color: white !important; }
+
+.navbar.scrolled .nav-links a.active:not(.btn) {
+    color: var(--color-primary) !important;
+    border-bottom-color: var(--color-primary);
+}
+
+/* Theme Toggle */
+.theme-toggle-btn {
+    background: none; border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%; width: 40px; height: 40px; color: white;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; transition: 0.3s;
+}
+.theme-toggle-btn:hover { background: rgba(255,255,255,0.1); }
+.navbar.scrolled .theme-toggle-btn { color: var(--text-main); border-color: var(--border-main); }
+.navbar.scrolled .theme-toggle-btn:hover { background: rgba(0,0,0,0.05); }
+
+/* Mobile Menu */
+.menu-toggle { display: none; color: white; font-size: 2rem; background: none; border: none; cursor: pointer; padding: 5px; }
+.navbar.scrolled .menu-toggle { color: var(--text-heading); }
+
+
+/* Sections */
+.hero {
+    height: 100vh; position: relative; display: flex;
+    align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden;
+}
+.hero-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://cieenghien.be/wp-content/uploads/2021/06/Image2bb.jpg');
+    background-size: cover; background-position: center;
+    filter: brightness(0.65); transform: scale(1.05); z-index: -1;
+}
+.hero h1 { color: white; margin-bottom: 24px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.hero p { font-size: var(--text-xl); margin-bottom: 40px; opacity: 0.95; font-weight: 300; }
+
+.page-header {
+    height: 50vh; min-height: 350px; position: relative; display: flex;
+    align-items: center; justify-content: center; text-align: center; color: white;
+    background-image: url('https://cieenghien.be/wp-content/uploads/2021/06/Image5b.jpg');
+    background-size: cover; background-position: center; margin-bottom: 60px;
+}
+.page-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); }
+.page-header h1 { color: white; margin-bottom: 15px; }
+
+
+/* Stats Bar */
+.stats-bar {
+    background: var(--bg-card);
+    padding: 40px 0; position: relative; z-index: 10; margin-top: -60px;
+    border-radius: var(--radius-md); box-shadow: var(--shadow-card);
+    max-width: 1100px; margin-left: auto; margin-right: auto;
+    border-bottom: 4px solid var(--color-accent);
+}
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; divide-x: 1px solid var(--border-main); }
+.stat-item h3 { font-size: var(--heading-md); margin-bottom: 5px; color: var(--color-primary); }
+.stat-item p {
+    font-size: var(--text-sm);
+    color: var(--color-detail); /* Beige en Dark, Brun en Light -> Très Lisible */
+    opacity: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* Presentation */
+.presentation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.presentation-img img {
+    width: 100%; border-radius: var(--radius-lg) 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 20px 20px 0 rgba(0,0,0,0.1);
+}
+.feature-list { margin-top: 30px; display: grid; gap: 20px; }
+.feature-item { display: flex; align-items: flex-start; gap: 15px; }
+.feature-icon {
+    width: 48px; height: 48px;
+    background: rgba(128,128,128,0.1); /* Neutre */
+    color: var(--color-icon); /* Bleu */
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+}
+
+/* Agenda Cards */
+.agenda-list {
+    max-width: 900px; margin: 0 auto;
+    background: var(--bg-card);
+    border-radius: var(--radius-md); overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+.agenda-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px; gap: 30px;
+    border-bottom: 1px solid var(--border-main);
+    transition: background-color 0.2s;
+}
+.agenda-item:hover { background-color: rgba(0,0,0,0.02); }
+.agenda-item .btn { margin-left: auto; flex-shrink: 0; }
+
+.date-box {
+    background: var(--L-ecorce); /* Toujours Brun pour l'identité visuelle du calendrier */
+    color: white; /* Toujours blanc */
+    padding: 12px; border-radius: var(--radius-sm);
+    text-align: center; min-width: 70px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+/* In dark mode, brown background can be slightly desaturated if needed, but solid brown is okay */
+body.dark-mode .date-box { background: #8d5524; opacity: 0.9; }
+
+.date-box .day { display: block; font-size: 1.6rem; font-weight: 700; line-height: 1; }
+.date-box .month { font-size: 0.8rem; text-transform: uppercase; }
+
+.event-info h3 { font-size: var(--text-xl); margin-bottom: 5px; color: var(--color-primary); }
+.event-info p { 
+    color: var(--text-main); opacity: 0.8; font-size: var(--text-sm); 
+    display: flex; gap: 15px; flex-wrap: wrap; 
+}
+
+/* Activities */
+.activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.activity-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md); overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s ease; border: 1px solid var(--border-main);
+}
+.activity-card:hover { transform: translateY(-8px); border-color: var(--color-accent); }
+.activity-img { height: 220px; background-color: #333; overflow: hidden; }
+.activity-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.activity-card:hover .activity-img img { transform: scale(1.05); }
+.activity-content { padding: 25px; }
+.activity-content h3 { font-size: var(--text-xl); margin-bottom: 10px; color: var(--color-primary); }
+.activity-content p { color: var(--text-main); opacity: 0.8; font-size: var(--text-base); }
+
+/* Filters */
+.month-heading {
+    margin: 40px 0 20px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-icon);
+    display: inline-block; color: var(--color-primary); font-size: var(--text-xl);
+}
+.filter-btn {
+    background: transparent; border: 1px solid var(--border-main);
+    padding: 8px 20px; border-radius: 20px; cursor: pointer;
+    font-family: var(--font-body); font-weight: 600;
+    color: var(--text-main); transition: 0.3s; font-size: var(--text-sm);
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--color-primary); color: var(--text-inverse); border-color: var(--color-primary);
+}
+.event-tag {
+    display: inline-block; background: rgba(128,128,128,0.1);
+    color: var(--color-icon);
+    padding: 4px 10px; border-radius: 4px; font-size: var(--text-xs);
+    margin-top: 5px; font-weight: 600;
+}
+
+/* Contact & Forms */
+.contact-support-wrapper {
+    background-color: var(--color-btn-bg); /* Vert Solide */
+    color: white; border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 80px 0;
+}
+.contact-info h2 { color: white; margin-bottom: 20px; }
+.contact-info p { opacity: 0.9; margin-bottom: 10px; color: white; font-size: var(--text-base); }
+.contact-details { margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; }
+
+.donation-badge {
+    background: rgba(255,255,255,0.1); padding: 30px;
+    border-radius: var(--radius-md); margin-top: 40px;
+    border-left: 4px solid var(--D-feuille); /* Accent vert clair */
+}
+.donation-badge h4 { color: var(--D-feuille); font-size: var(--text-lg); margin-bottom: 10px; }
+
+.form-box {
+    background: var(--bg-card); padding: 40px;
+    border-radius: var(--radius-md); color: var(--text-main);
+}
+.form-input {
+    width: 100%; padding: 12px;
+    border: 1px solid var(--border-main);
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 16px;
+}
+.form-input:focus {
+    outline: none; border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(128,128,128,0.1);
+}
+
+/* Footer */
+.site-footer {
+    background: #000000; /* Noir pur */
+    color: #888; padding: 30px 0; text-align: center;
+    font-size: var(--text-sm); border-top: 1px solid #222;
+}
+
+/* Animations */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   6. RESPONSIVE
+   ========================================= */
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container { padding: 0 40px; }
+    .stats-grid { gap: 10px; }
+    .presentation-grid { gap: 40px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 0; }
+    .menu-toggle { display: block; z-index: 1001; }
+    
+    .nav-links {
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background: var(--bg-card); /* Utilise fond de carte (blanc/gris) */
+        flex-direction: column; align-items: center; justify-content: center;
+        padding: 40px; transition: right 0.3s ease; z-index: 1000;
+    }
+    .nav-links.active { right: 0; }
+    
+    .nav-links a:not(.btn) { 
+        color: var(--text-main); font-size: var(--text-xl); margin: 10px 0;
+    }
+    .nav-links a.active:not(.btn) {
+        color: var(--color-primary) !important; border-bottom: 2px solid var(--color-primary);
+    }
+    
+    /* Bouton Mobile */
+    .nav-links a.btn-primary {
+        color: white !important;
+        background-color: var(--color-btn-bg);
+    }
+    .nav-links a.btn { margin-top: 20px; font-size: var(--text-lg); }
+
+    .hero h1 { font-size: var(--heading-md); margin-bottom: 20px; }
+    
+    .agenda-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .agenda-item .btn { align-self: flex-end; margin-left: 0; }
+    
+    .stats-bar { margin: -30px 10px 40px 10px; padding: 30px 20px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 30px; divide-x: none; divide-y: 1px solid var(--border-main); }
+    
+    .presentation-grid { grid-template-columns: 1fr; gap: 40px; }
+    .presentation-img { order: -1; }
+    
+    .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+}
