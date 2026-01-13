@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- Sticky Navbar Effect ---
     const navbar = document.querySelector('.navbar');
-    const heroSection = document.querySelector('.hero');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
