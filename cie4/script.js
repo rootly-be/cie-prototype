@@ -62,13 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Simple Parallax for Hero ---
     const heroBg = document.querySelector('.hero-bg');
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.pageYOffset;
-        if (scrollPosition < 800) { // Only animate when visible
-            // Move the background image position, not the div itself to avoid top gap
-            heroBg.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
-        }
-    });
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            if (scrollPosition < 800) { // Only animate when visible
+                // Move the background image position, not the div itself to avoid top gap
+                heroBg.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+            }
+        });
+    }
 
     // --- Theme Toggle ---
     const themeToggle = document.getElementById('themeToggle');
