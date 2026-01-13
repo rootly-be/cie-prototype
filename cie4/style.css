@@ -38,15 +38,19 @@
     --bg-input: #ffffff;
     
     --text-main: var(--L-text);
+    --text-muted: #5a6c7d;          /* Texte secondaire accessible (4.5:1 sur blanc) */
     --text-heading: var(--L-sapin);
     --text-inverse: #ffffff;
+
+    /* Focus ring */
+    --focus-ring: 0 0 0 3px rgba(74, 141, 183, 0.5);
     
     --border-main: var(--L-border);
     --shadow-card: 0 4px 20px rgba(26, 74, 38, 0.08);
 
     /* --- Echelle Typographique (Mobile First) --- */
     --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-body: 'Lora', serif;
     
     --text-xs: 0.85rem;
     --text-sm: 0.95rem;
@@ -86,9 +90,13 @@ body.dark-mode {
     --bg-input: #2c2c2c;
     
     --text-main: var(--D-text);
+    --text-muted: #a0aab4;          /* Texte secondaire accessible en dark mode */
     --text-heading: var(--D-sapin-text);
     --text-inverse: #ffffff;
-    
+
+    /* Focus ring dark mode */
+    --focus-ring: 0 0 0 3px rgba(129, 212, 250, 0.5);
+
     --border-main: var(--D-border);
     --shadow-card: 0 4px 20px rgba(0,0,0,0.5);
 }
@@ -128,6 +136,34 @@ h3 { font-size: var(--heading-sm); }
 h4 { font-size: var(--text-xl); }
 
 a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+
+/* =========================================
+   ACCESSIBILITE - Focus Visible
+   ========================================= */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.btn:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+/* Skip link pour navigation clavier */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-btn-bg);
+    color: var(--text-inverse);
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    z-index: 9999;
+    font-weight: 600;
+}
+.skip-link:focus { top: 10px; }
 
 /* Utilities */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -169,6 +205,23 @@ a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 .btn-outline:hover {
     background: var(--color-primary);
     color: var(--bg-body); /* Adaptatif: Blanc en Light, Noir en Dark */
+}
+
+/* Bouton désactivé (ex: "Complet") */
+.btn-disabled,
+.btn[disabled] {
+    background: var(--border-main);
+    color: var(--text-muted);
+    border-color: var(--border-main);
+    cursor: not-allowed;
+    opacity: 0.7;
+    pointer-events: none;
+}
+.btn-disabled:hover,
+.btn[disabled]:hover {
+    transform: none;
+    box-shadow: none;
+    filter: none;
 }
 
 /* =========================================
@@ -251,7 +304,7 @@ a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 /* Section Header Spacing */
 .section-header { text-align: center; max-width: 800px; margin: 0 auto 60px; }
 .section-header h2 { margin-bottom: 15px; }
-.section-header p { font-size: var(--text-lg); color: var(--text-main); opacity: 0.8; }
+.section-header p { font-size: var(--text-lg); color: var(--text-muted); }
 
 .page-header {
     height: 50vh; min-height: 350px; position: relative; display: flex;
@@ -329,9 +382,9 @@ body.dark-mode .date-box { background: #8d5524; opacity: 0.9; }
 .date-box .month { font-size: 0.8rem; text-transform: uppercase; }
 
 .event-info h3 { font-size: var(--text-xl); margin-bottom: 5px; color: var(--color-primary); }
-.event-info p { 
-    color: var(--text-main); opacity: 0.8; font-size: var(--text-sm); 
-    display: flex; gap: 15px; flex-wrap: wrap; 
+.event-info p {
+    color: var(--text-muted); font-size: var(--text-sm);
+    display: flex; gap: 15px; flex-wrap: wrap;
 }
 
 /* Activities */
@@ -348,7 +401,7 @@ body.dark-mode .date-box { background: #8d5524; opacity: 0.9; }
 .activity-card:hover .activity-img img { transform: scale(1.05); }
 .activity-content { padding: 25px; }
 .activity-content h3 { font-size: var(--text-xl); margin-bottom: 10px; color: var(--color-primary); }
-.activity-content p { color: var(--text-main); opacity: 0.8; font-size: var(--text-base); }
+.activity-content p { color: var(--text-muted); font-size: var(--text-base); }
 
 /* Filters */
 .agenda-filters {
@@ -431,8 +484,143 @@ body.dark-mode .date-box { background: #8d5524; opacity: 0.9; }
     font-size: var(--text-sm); border-top: 1px solid #222;
 }
 
-/* Animations */
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+/* =========================================
+   7. ANIMATIONS (Discrètes & Organiques)
+   ========================================= */
+
+/* Keyframes */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Éléments animables - état initial (invisible) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger pour les cartes (délai progressif) */
+.animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+.animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+
+/* Hero - Animation d'entrée */
+.hero-content {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.stats-bar {
+    animation: scaleIn 0.6s ease-out 0.5s both;
+}
+
+/* Micro-interactions hover subtiles */
+.activity-card {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(26, 74, 38, 0.12);
+}
+
+.agenda-item {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.agenda-item:hover {
+    background-color: rgba(0,0,0,0.02);
+    transform: translateX(4px);
+}
+
+/* Boutons - effet de pression subtil */
+.btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Liens avec soulignement animé */
+.activity-content a,
+.agenda-list + .text-center a {
+    position: relative;
+    display: inline-block;
+}
+
+.activity-content a::after,
+.agenda-list + .text-center a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+.activity-content a:hover::after,
+.agenda-list + .text-center a::after:hover {
+    width: 100%;
+}
+
+/* Feature icons - légère pulsation au hover */
+.feature-icon {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    transform: scale(1.08);
+    background: rgba(74, 141, 183, 0.15);
+}
+
+/* Date box - effet subtil */
+.date-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agenda-item:hover .date-box {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* Préférence utilisateur : réduire les animations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+}
 
 /* =========================================
    6. RESPONSIVE

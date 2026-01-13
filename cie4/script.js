@@ -74,15 +74,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Theme Toggle ---
     const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('img');
-    
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        
-        if (document.body.classList.contains('dark-mode')) {
-            themeIcon.src = 'img/moon.svg';
-        } else {
-            themeIcon.src = 'img/sun.svg';
+    if (themeToggle) {
+        const themeIcon = themeToggle.querySelector('img');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.src = 'img/moon.svg';
+            } else {
+                themeIcon.src = 'img/sun.svg';
+            }
+        });
+    }
+
+    // --- Scroll Reveal Animation ---
+    // Respecte prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+        if (animatedElements.length > 0) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px', // Déclenche un peu avant
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Une seule fois
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(el => observer.observe(el));
         }
-    });
+    } else {
+        // Si reduced motion, rendre tout visible immédiatement
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            el.classList.add('is-visible');
+        });
+    }
 });

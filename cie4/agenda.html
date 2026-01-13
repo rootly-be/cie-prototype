@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda complet - CIE Enghien</title>
     
-    <!-- Fonts -->
+    <!-- Fonts: Playfair Display (Titres) + Lora (Corps) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -48,7 +49,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="section" style="padding-top: 20px;">
+    <main id="main-content" class="section" style="padding-top: 20px;">
         <div class="container">
             
             <!-- Filters -->
@@ -121,7 +122,7 @@
                         <p><span><img src="img/clock.svg" alt="" width="16" height="16" style="vertical-align: middle; margin-right: 5px;">5 jours (09:00 - 16:00)</span> <span><img src="img/map-pin.svg" alt="" width="16" height="16" style="vertical-align: middle; margin-right: 5px;">Parc d'Enghien</span></p>
                         <span class="event-tag">Enfants 6-9 ans</span>
                     </div>
-                    <a href="#" class="btn btn-outline" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">Complet</a>
+                    <span class="btn btn-disabled" style="border-radius: 30px; padding: 8px 24px; font-size: 0.9rem;">Complet</span>
                 </article>
 
                 <!-- MOIS: SEPTEMBRE -->

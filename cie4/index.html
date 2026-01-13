@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIE Enghien - Centre d'Initiation à l'Environnement</title>
     
-    <!-- Fonts: Playfair Display (Serif) + Inter (Sans) -->
+    <!-- Fonts: Playfair Display (Titres) + Lora (Corps) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="#home" class="skip-link">Aller au contenu principal</a>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -77,28 +78,28 @@
         <div class="container">
             <div class="presentation-grid">
                 <div class="text-content">
-                    <h4 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #999; margin-bottom: 10px; font-family: var(--font-body);">Notre Mission</h4>
+                    <h4 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; font-family: var(--font-body);">Notre Mission</h4>
                     <h2>Comprendre pour mieux protéger</h2>
                     <p style="margin-bottom: 20px;">Le <strong>Centre d'Initiation à l'Environnement (CIE)</strong> d'Enghien est une ASBL dédiée à la sensibilisation à la nature. Situés dans le cadre exceptionnel du parc d'Enghien, nous proposons des activités pour les écoles, les familles et tous les curieux.</p>
                     <p>Notre approche pédagogique privilégie le contact direct avec le vivant, l'observation et l'expérimentation.</p>
                     
                     <div class="feature-list">
-                        <div class="feature-item">
+                        <div class="feature-item animate-on-scroll">
                             <div class="feature-icon">
                                 <img src="img/leaf.svg" alt="Icône feuille" width="24" height="24">
                             </div>
                             <div>
                                 <h4>Éducation relative à l'environnement</h4>
-                                <p style="font-size: 0.9rem; color: #666;">Des programmes adaptés aux socles de compétences pour tous les niveaux scolaires.</p>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Des programmes adaptés aux socles de compétences pour tous les niveaux scolaires.</p>
                             </div>
                         </div>
-                        <div class="feature-item">
+                        <div class="feature-item animate-on-scroll">
                             <div class="feature-icon">
                                 <img src="img/search.svg" alt="Icône loupe" width="24" height="24">
                             </div>
                             <div>
                                 <h4>Découverte Scientifique</h4>
-                                <p style="font-size: 0.9rem; color: #666;">Approche ludique et scientifique de la faune et de la flore locales.</p>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Approche ludique et scientifique de la faune et de la flore locales.</p>
                             </div>
                         </div>
                     </div>
@@ -113,7 +114,7 @@
     <!-- Agenda Section -->
     <section id="agenda" class="section bg-light">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>L'Agenda du CIE</h2>
                 <p>Nos prochaines balades, ateliers et événements.</p>
             </div>
@@ -168,13 +169,13 @@
     <!-- Activities Section -->
     <section id="activities" class="section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>Nos Pôles d'Activités</h2>
                 <p>Une offre variée pour tous les publics.</p>
             </div>
             
             <div class="activities-grid">
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <div class="activity-img">
                         <img src="https://cieenghien.be/wp-content/uploads/2021/06/21b.jpg" alt="Scolaire">
                     </div>
@@ -186,7 +187,7 @@
                     </div>
                 </div>
 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <div class="activity-img">
                         <img src="https://cieenghien.be/wp-content/uploads/2021/06/Image5b.jpg" alt="Stages">
                     </div>
@@ -198,7 +199,7 @@
                     </div>
                 </div>
 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <div class="activity-img">
                         <!-- Placeholder image logic or reuse -->
                         <img src="https://cieenghien.be/wp-content/uploads/2021/06/Image2bb.jpg" alt="Adultes">
@@ -218,7 +219,7 @@
     <section id="ideas" class="section bg-light">
         <div class="container text-center">
             <h2 style="font-size: 2rem; margin-bottom: 20px;">Une idée ? Une suggestion ?</h2>
-            <p style="max-width: 600px; margin: 0 auto 30px; color: #666;">La boîte à idées est ouverte ! Aidez-nous à améliorer le CIE.</p>
+            <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-muted);">La boîte à idées est ouverte ! Aidez-nous à améliorer le CIE.</p>
             <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
                 <input type="text" class="form-input" placeholder="Votre idée en quelques mots..." style="flex-grow: 1;">
                 <button type="submit" class="btn btn-primary" onclick="event.preventDefault(); alert('Merci pour votre suggestion !')">Envoyer</button>
