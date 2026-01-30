@@ -1,0 +1,80 @@
+/**
+ * Textarea Component Styles
+ * Source: cie4/style.css:473-489
+ *
+ * Form textarea styling matching the approved cie4 design.
+ */
+
+/* Field Container */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Label */
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.required {
+  color: var(--color-error, #dc3545);
+  margin-left: 2px;
+}
+
+/* Textarea (.form-input equivalent) */
+.textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-main);
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body), 'Lora', serif;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Focus State */
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.1);
+}
+
+/* Note: :focus-visible is handled globally in typography.css */
+
+/* Error State */
+.textareaError {
+  border-color: var(--color-error, #dc3545);
+}
+
+.textareaError:focus,
+.textareaError:focus-visible {
+  border-color: var(--color-error, #dc3545);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+/* Error Message */
+.error {
+  font-size: var(--text-sm);
+  color: var(--color-error, #dc3545);
+}
+
+/* Disabled State */
+.textarea:disabled {
+  background-color: var(--border-main);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+  resize: none;
+}

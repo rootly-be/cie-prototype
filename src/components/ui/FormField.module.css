@@ -1,0 +1,37 @@
+/**
+ * FormField Component Styles
+ *
+ * Wrapper component for form field layout (label + input + error).
+ * Use this to wrap custom inputs that don't have built-in label/error support.
+ */
+
+/* Field Container */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Label */
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.required {
+  color: var(--color-error, #dc3545);
+  margin-left: 2px;
+}
+
+/* Error Message */
+.error {
+  font-size: var(--text-sm);
+  color: var(--color-error, #dc3545);
+}
+
+/* Hint/Help Text */
+.hint {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}

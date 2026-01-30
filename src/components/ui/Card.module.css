@@ -1,0 +1,68 @@
+/**
+ * Card Component Styles
+ * Source: cie4/style.css:402-416, 545-554
+ *
+ * Based on activity-card design from cie4.
+ */
+
+/* Base Card */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-main);
+}
+
+/* Hoverable Card - Lift animation on hover */
+.hoverable {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
+}
+
+.hoverable:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(26, 74, 38, 0.12);
+}
+
+/* Dark mode hover shadow */
+:global(body.dark-mode) .hoverable:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Note: Card focus styles should be applied when Card is wrapped in interactive elements
+   (links, buttons). The wrapper element handles focus, not the Card div itself. */
+
+/* Card Image Area */
+.cardImage {
+  position: relative;
+  height: 220px;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.cardImage img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hoverable:hover .cardImage img {
+  transform: scale(1.05);
+}
+
+/* Card Content Area */
+.cardContent {
+  padding: 25px;
+}
+
+.cardContent h3 {
+  font-size: var(--text-xl);
+  margin-bottom: 10px;
+  color: var(--color-primary);
+}
+
+.cardContent p {
+  color: var(--text-muted);
+  font-size: var(--text-base);
+}

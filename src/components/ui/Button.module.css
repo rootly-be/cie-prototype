@@ -1,0 +1,82 @@
+/**
+ * Button Component Styles
+ * Source: cie4/style.css:187-237
+ *
+ * All values extracted from the approved cie4 design.
+ */
+
+/* Base Button (.btn) */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: var(--text-base);
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  font-family: var(--font-body), 'Lora', serif;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary Button (.btn-primary) */
+.btnPrimary {
+  background-color: var(--color-btn-bg);
+  color: var(--text-inverse);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Outline Button (.btn-outline) */
+.btnOutline {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+}
+
+.btnOutline:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: var(--bg-body);
+}
+
+/* Disabled Button (.btn-disabled) */
+.btnDisabled,
+.btn:disabled {
+  background: var(--border-main);
+  color: var(--text-muted);
+  border-color: var(--border-main);
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.btnDisabled:hover,
+.btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Focus Visible - Accessibility */
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btnPrimary:focus-visible {
+  box-shadow: var(--focus-ring), 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btnOutline:focus-visible {
+  box-shadow: var(--focus-ring);
+  border-color: var(--color-accent);
+}

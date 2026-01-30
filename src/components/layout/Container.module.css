@@ -1,0 +1,17 @@
+/**
+ * Container Component Styles
+ * Source: cie4/style.css:170
+ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 40px;
+  }
+}

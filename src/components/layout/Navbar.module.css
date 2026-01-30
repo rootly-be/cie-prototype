@@ -1,0 +1,183 @@
+/**
+ * Navbar Component Styles
+ * Source: cie4/style.css:243-300, 646-670
+ */
+
+/* Base Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+.scrolled {
+  background: var(--bg-card);
+  box-shadow: 0 2px 20px var(--shadow-card);
+  padding: 15px 0;
+}
+
+.navInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-family: var(--font-heading), 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.scrolled .logo {
+  color: var(--text-heading);
+}
+
+/* Nav Links */
+.navLinks {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navLinks a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: var(--text-base);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+/* M4 Fix: Removed hover state for transparent mode - not in cie4 spec */
+
+.navLinks a.active {
+  color: white;
+  font-weight: 700;
+  border-bottom-color: var(--color-accent);
+}
+
+/* Scrolled state links */
+.scrolled .navLinks a {
+  color: var(--text-main);
+}
+
+.scrolled .navLinks a:hover {
+  color: var(--color-accent);
+}
+
+.scrolled .navLinks a.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Theme Toggle */
+.themeToggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.themeToggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.scrolled .themeToggle {
+  color: var(--text-main);
+  border-color: var(--border-main);
+}
+
+.scrolled .themeToggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
+  display: none;
+  color: white;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  transition: color 0.3s ease;
+}
+
+.scrolled .menuToggle {
+  color: var(--text-heading);
+}
+
+/* Focus Visible - Accessibility */
+.logo:focus-visible,
+.navLinks a:focus-visible,
+.themeToggle:focus-visible,
+.menuToggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .menuToggle {
+    display: block;
+  }
+
+  .navLinks {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-card);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    gap: 20px;
+  }
+
+  .navLinks.active {
+    right: 0;
+  }
+
+  .navLinks a {
+    color: var(--text-main);
+    font-size: var(--text-xl);
+    margin: 10px 0;
+  }
+
+  .navLinks a.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+
+  .themeToggle {
+    color: var(--text-main);
+    border-color: var(--border-main);
+    margin-top: 20px;
+  }
+}

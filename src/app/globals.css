@@ -1,0 +1,34 @@
+/**
+ * CIE Enghien - Global Styles
+ *
+ * This file imports the design system and adds base resets.
+ * Component-specific styles should use CSS Modules.
+ */
+
+/* Import Design System */
+@import '../styles/variables.css';
+@import '../styles/typography.css';
+@import '../styles/animations.css';
+
+/* =========================================
+   BASE RESET
+   ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-body);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

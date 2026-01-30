@@ -1,0 +1,12 @@
+/**
+ * Section Component Styles
+ * Source: cie4/style.css:171-172
+ */
+
+.section {
+  padding: 100px 0;
+}
+
+.bgLight {
+  background-color: rgba(0, 0, 0, 0.03);
+}

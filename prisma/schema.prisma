@@ -1,0 +1,267 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// =========================================
+// Authentication & Audit Models (Epic 2)
+// =========================================
+
+/// Admin user for backoffice access
+/// Password hashing handled in application layer (bcrypt)
+model Admin {
+  id           String      @id @default(cuid())
+  email        String      @unique
+  passwordHash String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  // Relations
+  auditLogs           AuditLog[]
+  animationsCreated   Animation[]   @relation("AnimationCreatedBy")
+  animationsUpdated   Animation[]   @relation("AnimationUpdatedBy")
+  formationsCreated   Formation[]   @relation("FormationCreatedBy")
+  formationsUpdated   Formation[]   @relation("FormationUpdatedBy")
+  stagesCreated       Stage[]       @relation("StageCreatedBy")
+  stagesUpdated       Stage[]       @relation("StageUpdatedBy")
+  agendaEventsCreated AgendaEvent[] @relation("AgendaEventCreatedBy")
+  agendaEventsUpdated AgendaEvent[] @relation("AgendaEventUpdatedBy")
+
+  @@index([email])
+}
+
+/// Audit log for tracking admin actions
+/// Event naming convention: entity.action (e.g., 'animation.created')
+model AuditLog {
+  id        String   @id @default(cuid())
+  adminId   String
+  admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  action    String   // e.g., 'animation.created', 'admin.login'
+  entity    String   // e.g., 'Animation', 'Formation', 'Admin'
+  entityId  String   // ID of the affected entity
+  details   String?  // Optional JSON details
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([adminId])
+  @@index([entity, entityId])
+}
+
+// =========================================
+// Content Entities (Epic 3)
+// =========================================
+
+/// School animations (educational programs)
+/// FR1, FR21, FR22: CRUD, browse by level, browse by category
+model Animation {
+  id          String   @id @default(cuid())
+  titre       String
+  description String
+  niveau      String   // M1, M2/M3, P1-P2, P3-P4, P5-P6, S1-S3, S4-S6
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  categorieId String
+  categorie   Category @relation(fields: [categorieId], references: [id], onDelete: Restrict)
+  tags        Tag[]    @relation("AnimationTags")
+  images      Image[]  @relation("AnimationImages")
+
+  // Audit tracking
+  createdById String?
+  createdBy   Admin?  @relation("AnimationCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  updatedById String?
+  updatedBy   Admin?  @relation("AnimationUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+
+  @@index([published])
+  @@index([niveau])
+  @@index([categorieId])
+  @@index([createdAt])
+}
+
+/// Adult formations (training programs)
+/// FR2, FR14, FR23: CRUD, auto-agenda, browse by category
+model Formation {
+  id           String   @id @default(cuid())
+  titre        String
+  description  String
+  billetwebUrl String?
+  billetwebId  String?  @unique
+  placesTotal  Int?
+  placesLeft   Int?
+  isFull       Boolean  @default(false) // FR13: Manual override
+  published    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  categorieId String
+  categorie   Category        @relation(fields: [categorieId], references: [id], onDelete: Restrict)
+  dates       FormationDate[]
+  tags        Tag[]           @relation("FormationTags")
+  images      Image[]         @relation("FormationImages")
+
+  // Audit tracking
+  createdById String?
+  createdBy   Admin? @relation("FormationCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  updatedById String?
+  updatedBy   Admin? @relation("FormationUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+
+  @@index([published])
+  @@index([categorieId])
+  @@index([billetwebId])
+  @@index([createdAt])
+}
+
+/// Formation dates for multi-session formations
+/// FR14: Enable agenda auto-generation from formations
+model FormationDate {
+  id          String    @id @default(cuid())
+  formationId String
+  formation   Formation @relation(fields: [formationId], references: [id], onDelete: Cascade)
+  dateDebut   DateTime
+  dateFin     DateTime?
+  lieu        String?
+  createdAt   DateTime  @default(now())
+
+  @@index([formationId])
+  @@index([dateDebut])
+}
+
+/// Holiday stages/camps
+/// FR3, FR15, FR24, FR25: CRUD, auto-agenda, browse by age/period
+model Stage {
+  id           String   @id @default(cuid())
+  titre        String
+  description  String
+  ageMin       Int
+  ageMax       Int
+  periode      String   // Pâques, Été, Toussaint, Carnaval
+  dateDebut    DateTime
+  dateFin      DateTime
+  prix         String   // Format: "50€" or "45€/jour"
+  billetwebUrl String?
+  billetwebId  String?  @unique
+  placesTotal  Int?
+  placesLeft   Int?
+  isFull       Boolean  @default(false) // FR13: Manual override
+  published    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  categorieId String?
+  categorie   Category? @relation(fields: [categorieId], references: [id], onDelete: SetNull)
+  tags        Tag[]     @relation("StageTags")
+  images      Image[]   @relation("StageImages")
+
+  // Audit tracking
+  createdById String?
+  createdBy   Admin? @relation("StageCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  updatedById String?
+  updatedBy   Admin? @relation("StageUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+
+  @@index([published])
+  @@index([dateDebut])
+  @@index([periode])
+  @@index([ageMin, ageMax])
+  @@index([categorieId])
+  @@index([billetwebId])
+}
+
+/// Agenda events (hybrid: auto-generated + manual)
+/// FR4, FR14, FR15, FR16, FR17: Auto-generation, manual events
+model AgendaEvent {
+  id         String    @id @default(cuid())
+  titre      String
+  date       DateTime
+  dateFin    DateTime?
+  lieu       String?
+  sourceType String?   // 'formation', 'stage', 'manual'
+  sourceId   String?   // ID of linked Formation or Stage
+  published  Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  // Relations
+  tags Tag[] @relation("AgendaEventTags")
+
+  // Audit tracking (only for manual events)
+  createdById String?
+  createdBy   Admin? @relation("AgendaEventCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  updatedById String?
+  updatedBy   Admin? @relation("AgendaEventUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+
+  @@index([date])
+  @@index([published])
+  @@index([sourceType, sourceId])
+}
+
+// =========================================
+// Supporting Entities
+// =========================================
+
+/// Categories for organizing content by type
+/// FR5, FR6, FR7: Manage Animation/Formation/Stage categories
+model Category {
+  id         String      @id @default(cuid())
+  nom        String
+  type       String      // 'animation', 'formation', 'stage'
+  createdAt  DateTime    @default(now())
+
+  // Relations
+  animations Animation[]
+  formations Formation[]
+  stages     Stage[]
+
+  @@unique([nom, type]) // Same name OK across types
+  @@index([type])
+}
+
+/// Tags for cross-entity filtering
+/// FR8, FR9, FR27: Manage tags with colors, cross-entity usage
+model Tag {
+  id           String        @id @default(cuid())
+  nom          String        @unique
+  couleur      String?       // Hex color for agenda display
+  createdAt    DateTime      @default(now())
+
+  // Relations
+  animations   Animation[]   @relation("AnimationTags")
+  formations   Formation[]   @relation("FormationTags")
+  stages       Stage[]       @relation("StageTags")
+  agendaEvents AgendaEvent[] @relation("AgendaEventTags")
+
+  @@index([nom])
+}
+
+/// Images stored in Hetzner S3
+/// FR10: Image upload, NFR17: Alt text for accessibility
+model Image {
+  id          String     @id @default(cuid())
+  url         String     // S3 URL
+  alt         String?    // Accessibility
+  createdAt   DateTime   @default(now())
+
+  // Relations (optional - image belongs to one entity)
+  animationId String?
+  animation   Animation? @relation("AnimationImages", fields: [animationId], references: [id], onDelete: Cascade)
+
+  formationId String?
+  formation   Formation? @relation("FormationImages", fields: [formationId], references: [id], onDelete: Cascade)
+
+  stageId     String?
+  stage       Stage?     @relation("StageImages", fields: [stageId], references: [id], onDelete: Cascade)
+
+  @@index([animationId])
+  @@index([formationId])
+  @@index([stageId])
+}

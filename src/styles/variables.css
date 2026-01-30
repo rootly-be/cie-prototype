@@ -1,0 +1,110 @@
+/**
+ * CIE Enghien Design System - CSS Variables
+ * Source: cie4/style.css (approved design)
+ *
+ * This file defines the complete color system with light/dark mode support.
+ * DO NOT modify hex values - they are from the approved design.
+ */
+
+:root {
+  /* =========================================
+     1. LIGHT MODE PALETTE (Nature Profonde)
+     ========================================= */
+  --L-sapin: #1a4a26;      /* Dominant: Titles, Buttons */
+  --L-feuille: #649a4f;    /* Secondary: Hover, Accents */
+  --L-ecorce: #8d5524;     /* Details: Rich text, dates */
+  --L-ecorce-dark: #1e3d2b; /* Dark variant for special date-box */
+  --L-eau: #4a8db7;        /* Accents: Icons */
+  --L-bg: #fdfcf8;         /* Off-white warm */
+  --L-surface: #ffffff;    /* Pure white */
+  --L-text: #2c3e50;       /* Dark gray readable */
+  --L-border: #e0e0e0;
+
+  /* =========================================
+     2. DARK MODE PALETTE (Nature Lumineuse)
+     ========================================= */
+  --D-sapin-text: #a5d6a7; /* Mint Green: For TITLES (readability) */
+  --D-sapin-btn: #2e7d32;  /* Solid Green: For BUTTONS (white contrast) */
+  --D-feuille: #81c784;    /* Tender Green: Accents */
+  --D-ecorce: #e6ceb9;     /* Sand Beige: Replaces brown (readability on black) */
+  --D-eau: #81d4fa;        /* Sky Blue: Luminous icons */
+  --D-bg: #121212;         /* Deep black */
+  --D-surface: #1e1e1e;    /* Anthracite gray */
+  --D-text: #e0e0e0;       /* Off-white */
+  --D-border: #333333;
+
+  /* =========================================
+     3. ACTIVE VARIABLE MAPPINGS (Default: Light)
+     ========================================= */
+
+  /* Colors */
+  --color-primary: var(--L-sapin);       /* Titles, Brand */
+  --color-btn-bg: var(--L-sapin);        /* Button backgrounds */
+  --color-accent: var(--L-feuille);      /* Hovers, Active borders */
+  --color-detail: var(--L-ecorce);       /* Dates, Stats */
+  --color-icon: var(--L-eau);            /* Icons */
+  --color-error: #c53030;                /* Error states (deeper red, WCAG AA compliant) */
+
+  /* Backgrounds */
+  --bg-body: var(--L-bg);
+  --bg-card: var(--L-surface);
+  --bg-input: #ffffff;
+
+  /* Text */
+  --text-main: var(--L-text);
+  --text-muted: #5a6c7d;          /* Secondary text accessible (4.5:1 on white) */
+  --text-heading: var(--L-sapin);
+  --text-inverse: #ffffff;
+
+  /* Focus ring - Accessibility */
+  --focus-ring: 0 0 0 3px rgba(74, 141, 183, 0.5);
+
+  /* Borders & Shadows */
+  --border-main: var(--L-border);
+  --shadow-card: 0 4px 20px rgba(26, 74, 38, 0.08);
+
+  /* =========================================
+     4. SPACING & BORDER RADIUS
+     ========================================= */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 30px;
+}
+
+/* =========================================
+   5. DARK MODE REMAPPING
+   Applied to html element for FOUC prevention (script runs before body exists)
+   ========================================= */
+html.dark-mode {
+  /* Colors */
+  --color-primary: var(--D-sapin-text);  /* Light titles */
+  --color-btn-bg: var(--D-sapin-btn);    /* Solid buttons */
+  --color-accent: var(--D-feuille);
+  --color-detail: var(--D-ecorce);       /* Readable beige */
+  --color-icon: var(--D-eau);
+  --color-error: #fc8181;                /* Error states (softer red for dark mode) */
+
+  /* Backgrounds */
+  --bg-body: var(--D-bg);
+  --bg-card: var(--D-surface);
+  --bg-input: #2c2c2c;
+
+  /* Text */
+  --text-main: var(--D-text);
+  --text-muted: #a0aab4;          /* Secondary text accessible in dark mode */
+  --text-heading: var(--D-sapin-text);
+  --text-inverse: #ffffff;
+
+  /* Focus ring dark mode */
+  --focus-ring: 0 0 0 3px rgba(129, 212, 250, 0.5);
+
+  /* Borders & Shadows */
+  --border-main: var(--D-border);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark mode image brightness reduction */
+html.dark-mode img {
+  filter: brightness(0.85);
+  transition: filter 0.3s;
+}

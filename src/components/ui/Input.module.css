@@ -1,0 +1,82 @@
+/**
+ * Input Component Styles
+ * Source: cie4/style.css:473-489
+ *
+ * Form input styling matching the approved cie4 design.
+ *
+ * Note: .field, .label, .required, .error classes are duplicated across
+ * form component CSS modules. This is a deliberate trade-off for CSS Modules
+ * encapsulation. Future optimization: extract to shared form-base.module.css
+ * using CSS Modules composition if duplication becomes a maintenance issue.
+ */
+
+/* Field Container */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Label */
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.required {
+  color: var(--color-error, #dc3545);
+  margin-left: 2px;
+}
+
+/* Input (.form-input equivalent) */
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-main);
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body), 'Lora', serif;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Focus State */
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.1);
+}
+
+/* Note: :focus-visible is handled globally in typography.css */
+
+/* Error State */
+.inputError {
+  border-color: var(--color-error, #dc3545);
+}
+
+.inputError:focus,
+.inputError:focus-visible {
+  border-color: var(--color-error, #dc3545);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+/* Error Message */
+.error {
+  font-size: var(--text-sm);
+  color: var(--color-error, #dc3545);
+}
+
+/* Disabled State */
+.input:disabled {
+  background-color: var(--border-main);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}

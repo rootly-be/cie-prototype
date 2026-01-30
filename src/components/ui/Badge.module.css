@@ -1,0 +1,63 @@
+/**
+ * Badge Component Styles
+ * Based on: cie4/style.css event-tag (line 440-445)
+ *
+ * Variants for status badges (FR29-32):
+ * - nouveau: New content (< 7 days)
+ * - complet: Sold out / full
+ * - dernieres-places: Last spots available
+ * - inscriptions-bientot: Registration coming soon
+ */
+
+/* Base Badge Style */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  font-family: var(--font-body), 'Lora', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Nouveau - Green accent for new items */
+.nouveau {
+  background-color: rgba(100, 154, 79, 0.15); /* L-feuille with transparency */
+  color: var(--color-accent);
+}
+
+/* Dark mode adjustment */
+:global(body.dark-mode) .nouveau {
+  background-color: rgba(129, 199, 132, 0.2); /* D-feuille with transparency */
+  color: var(--D-feuille);
+}
+
+/* Complet - Muted/disabled appearance for sold out */
+.complet {
+  background-color: var(--border-main);
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* Dernières places - Warning/urgent tone */
+.dernieresPlaces {
+  background-color: rgba(141, 85, 36, 0.15); /* L-ecorce with transparency */
+  color: var(--color-detail);
+}
+
+:global(body.dark-mode) .dernieresPlaces {
+  background-color: rgba(230, 206, 185, 0.15); /* D-ecorce with transparency */
+  color: var(--D-ecorce);
+}
+
+/* Inscriptions bientôt - Informational blue */
+.inscriptionsBientot {
+  background-color: rgba(74, 141, 183, 0.15); /* L-eau with transparency */
+  color: var(--color-icon);
+}
+
+:global(body.dark-mode) .inscriptionsBientot {
+  background-color: rgba(129, 212, 250, 0.15); /* D-eau with transparency */
+  color: var(--D-eau);
+}

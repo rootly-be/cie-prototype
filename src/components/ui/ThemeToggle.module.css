@@ -1,0 +1,7 @@
+/* Theme Toggle Base Styles */
+/* Context-specific styles (navbar scrolled state) come from parent className */
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
