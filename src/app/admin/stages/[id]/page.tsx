@@ -26,6 +26,7 @@ interface Stage {
   dateDebut: string
   dateFin: string
   prix: string
+  billetwebUrl: string | null
   categorieId: string | null
   isFull: boolean
   published: boolean
@@ -66,6 +67,7 @@ export default function EditStagePage({
   const [dateDebut, setDateDebut] = useState('')
   const [dateFin, setDateFin] = useState('')
   const [prix, setPrix] = useState('')
+  const [billetwebUrl, setBilletwebUrl] = useState('')
   const [categorieId, setCategorieId] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isFull, setIsFull] = useState(false)
@@ -95,6 +97,7 @@ export default function EditStagePage({
           setDateDebut(stage.dateDebut.split('T')[0]) // Format for date input
           setDateFin(stage.dateFin.split('T')[0])
           setPrix(stage.prix)
+          setBilletwebUrl(stage.billetwebUrl || '')
           setCategorieId(stage.categorieId || '')
           setSelectedTags(stage.tags.map((t) => t.id))
           setIsFull(stage.isFull)
@@ -172,6 +175,7 @@ export default function EditStagePage({
           dateDebut,
           dateFin,
           prix,
+          billetwebUrl: billetwebUrl || null,
           categorieId: categorieId || undefined,
           tagIds: selectedTags,
           isFull,
@@ -335,6 +339,13 @@ export default function EditStagePage({
                 error={errors.prix}
                 required
                 placeholder="Ex: 50€ ou 45€/jour"
+              />
+
+              <Input
+                label="Lien d'inscription (Billetweb)"
+                value={billetwebUrl}
+                onChange={(e) => setBilletwebUrl(e.target.value)}
+                placeholder="https://www.billetweb.fr/..."
               />
             </div>
 

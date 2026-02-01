@@ -42,6 +42,7 @@ export default function NewStagePage() {
   const [dateDebut, setDateDebut] = useState('')
   const [dateFin, setDateFin] = useState('')
   const [prix, setPrix] = useState('')
+  const [billetwebUrl, setBilletwebUrl] = useState('')
   const [categorieId, setCategorieId] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isFull, setIsFull] = useState(false)
@@ -127,6 +128,7 @@ export default function NewStagePage() {
           dateDebut,
           dateFin,
           prix,
+          billetwebUrl: billetwebUrl || null,
           categorieId: categorieId || undefined,
           tagIds: selectedTags,
           isFull,
@@ -267,6 +269,13 @@ export default function NewStagePage() {
                 error={errors.prix}
                 required
                 placeholder="Ex: 50€ ou 45€/jour"
+              />
+
+              <Input
+                label="Lien d'inscription (Billetweb)"
+                value={billetwebUrl}
+                onChange={(e) => setBilletwebUrl(e.target.value)}
+                placeholder="https://www.billetweb.fr/..."
               />
             </div>
 

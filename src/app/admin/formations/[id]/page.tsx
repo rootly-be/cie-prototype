@@ -21,6 +21,7 @@ interface Formation {
   titre: string
   description: string
   categorieId: string
+  billetwebUrl: string | null
   isFull: boolean
   published: boolean
   categorie: Category
@@ -48,6 +49,7 @@ export default function EditFormationPage({
   const [titre, setTitre] = useState('')
   const [description, setDescription] = useState('')
   const [categorieId, setCategorieId] = useState('')
+  const [billetwebUrl, setBilletwebUrl] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isFull, setIsFull] = useState(false)
   const [published, setPublished] = useState(false)
@@ -71,6 +73,7 @@ export default function EditFormationPage({
           setTitre(formation.titre)
           setDescription(formation.description)
           setCategorieId(formation.categorieId)
+          setBilletwebUrl(formation.billetwebUrl || '')
           setSelectedTags(formation.tags.map((t) => t.id))
           setIsFull(formation.isFull)
           setPublished(formation.published)
@@ -123,6 +126,7 @@ export default function EditFormationPage({
           titre,
           description,
           categorieId,
+          billetwebUrl: billetwebUrl || null,
           tagIds: selectedTags,
           isFull,
           published,
@@ -216,6 +220,14 @@ export default function EditFormationPage({
                 placeholder="Sélectionnez une catégorie"
                 error={errors.categorieId}
                 required
+              />
+
+              <Input
+                label="Lien d'inscription (Billetweb)"
+                value={billetwebUrl}
+                onChange={(e) => setBilletwebUrl(e.target.value)}
+                placeholder="https://www.billetweb.fr/..."
+                error={errors.billetwebUrl}
               />
             </div>
 

@@ -30,6 +30,7 @@ export default function NewFormationPage() {
   const [titre, setTitre] = useState('')
   const [description, setDescription] = useState('')
   const [categorieId, setCategorieId] = useState('')
+  const [billetwebUrl, setBilletwebUrl] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isFull, setIsFull] = useState(false)
   const [published, setPublished] = useState(false)
@@ -90,6 +91,7 @@ export default function NewFormationPage() {
           titre,
           description,
           categorieId,
+          billetwebUrl: billetwebUrl || null,
           tagIds: selectedTags,
           isFull,
           published,
@@ -160,6 +162,13 @@ export default function NewFormationPage() {
                 placeholder="Sélectionnez une catégorie"
                 error={errors.categorieId}
                 required
+              />
+
+              <Input
+                label="Lien d'inscription (Billetweb)"
+                value={billetwebUrl}
+                onChange={(e) => setBilletwebUrl(e.target.value)}
+                placeholder="https://www.billetweb.fr/..."
               />
             </div>
 

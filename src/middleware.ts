@@ -107,9 +107,10 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Only match admin routes
+     * Match admin routes and admin API routes
      * All other routes (/, /login, /api/*, public pages) are NOT protected
      */
     '/admin/:path*',
+    '/api/admin/:path*',
   ]
 }
