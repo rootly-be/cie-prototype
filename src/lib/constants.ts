@@ -15,6 +15,12 @@ export const AUDIT_ACTIONS = {
   STAGE_CREATED: 'stage.created',
   STAGE_UPDATED: 'stage.updated',
   STAGE_DELETED: 'stage.deleted',
+  AGENDA_EVENT_CREATED: 'agenda_event.created',
+  AGENDA_EVENT_UPDATED: 'agenda_event.updated',
+  AGENDA_EVENT_DELETED: 'agenda_event.deleted',
+  BILLETWEB_SYNC_STARTED: 'billetweb.sync_started',
+  BILLETWEB_SYNC_COMPLETED: 'billetweb.sync_completed',
+  BILLETWEB_SYNC_FAILED: 'billetweb.sync_failed',
 } as const
 
 export const ERROR_CODES = {

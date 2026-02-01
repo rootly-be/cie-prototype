@@ -50,40 +50,40 @@ describe('auth utilities', () => {
   })
 
   describe('signJWT', () => {
-    it('should create a valid JWT token', () => {
+    it('should create a valid JWT token', async () => {
       const payload = {
         adminId: 'test-admin-id',
         email: 'admin@test.com'
       }
 
-      const token = signJWT(payload)
+      const token = await signJWT(payload)
 
       expect(token).toBeDefined()
       expect(typeof token).toBe('string')
       expect(token.split('.')).toHaveLength(3) // JWT format: header.payload.signature
     })
 
-    it('should include adminId and email in token', () => {
+    it('should include adminId and email in token', async () => {
       const payload = {
         adminId: 'test-admin-id',
         email: 'admin@test.com'
       }
 
-      const token = signJWT(payload)
-      const decoded = verifyJWT(token)
+      const token = await signJWT(payload)
+      const decoded = await verifyJWT(token)
 
       expect(decoded.adminId).toBe(payload.adminId)
       expect(decoded.email).toBe(payload.email)
     })
 
-    it('should set 24h expiry', () => {
+    it('should set 24h expiry', async () => {
       const payload = {
         adminId: 'test-admin-id',
         email: 'admin@test.com'
       }
 
-      const token = signJWT(payload)
-      const decoded = verifyJWT(token)
+      const token = await signJWT(payload)
+      const decoded = await verifyJWT(token)
 
       expect(decoded.exp).toBeDefined()
       expect(decoded.iat).toBeDefined()
@@ -94,35 +94,35 @@ describe('auth utilities', () => {
   })
 
   describe('verifyJWT', () => {
-    it('should verify and decode valid token', () => {
+    it('should verify and decode valid token', async () => {
       const payload = {
         adminId: 'test-admin-id',
         email: 'admin@test.com'
       }
 
-      const token = signJWT(payload)
-      const decoded = verifyJWT(token)
+      const token = await signJWT(payload)
+      const decoded = await verifyJWT(token)
 
       expect(decoded.adminId).toBe(payload.adminId)
       expect(decoded.email).toBe(payload.email)
     })
 
-    it('should throw error for invalid token', () => {
+    it('should throw error for invalid token', async () => {
       const invalidToken = 'invalid.token.here'
 
-      expect(() => verifyJWT(invalidToken)).toThrow()
+      await expect(verifyJWT(invalidToken)).rejects.toThrow()
     })
 
-    it('should throw error for tampered token', () => {
+    it('should throw error for tampered token', async () => {
       const payload = {
         adminId: 'test-admin-id',
         email: 'admin@test.com'
       }
 
-      const token = signJWT(payload)
+      const token = await signJWT(payload)
       const tamperedToken = token.slice(0, -10) + 'tampered123'
 
-      expect(() => verifyJWT(tamperedToken)).toThrow()
+      await expect(verifyJWT(tamperedToken)).rejects.toThrow()
     })
   })
 })

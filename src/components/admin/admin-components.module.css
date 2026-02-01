@@ -1,0 +1,310 @@
+/**
+ * Admin Shared Components Styles
+ * Story 3.7: Build Admin Content Pages
+ */
+
+/* Status Toggle */
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: var(--border-main);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 0;
+}
+
+.toggle:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggleActive {
+  background: var(--color-primary);
+}
+
+.toggleLoading {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggleActive .toggleThumb {
+  transform: translateX(20px);
+}
+
+.toggleError {
+  background: var(--color-error);
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* Content Preview */
+.preview {
+  background: var(--bg-body);
+  border: 1px dashed var(--border-main);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-main);
+}
+
+.previewIcon {
+  font-size: 16px;
+}
+
+.previewTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.previewCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  border: 1px solid var(--border-main);
+}
+
+.previewCardTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 8px 0;
+}
+
+.previewCardMeta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.previewCardMetaItem {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.previewCardDescription {
+  font-size: 0.9375rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.previewEmpty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+}
+
+.previewEmptyIcon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+/* Confirm Dialog */
+.confirmOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.confirmDialog {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.confirmTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 12px 0;
+}
+
+.confirmMessage {
+  font-size: 0.9375rem;
+  color: var(--text-main);
+  margin: 0 0 24px 0;
+}
+
+.confirmActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Tag Multi-Select */
+.tagSelect {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-main);
+  border-radius: var(--radius-sm);
+  min-height: 48px;
+}
+
+.tagSelectError {
+  border-color: var(--color-error);
+}
+
+.tagOption {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--bg-body);
+  border: 1px solid var(--border-main);
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tagOption:hover {
+  border-color: var(--color-accent);
+}
+
+.tagOptionSelected {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  border-color: var(--color-primary);
+}
+
+.tagOptionSelected:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.tagRemove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* Image Upload */
+.imageUpload {
+  border: 2px dashed var(--border-main);
+  border-radius: var(--radius-sm);
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.imageUpload:hover {
+  border-color: var(--color-accent);
+  background: rgba(100, 154, 79, 0.03);
+}
+
+.imageUploadActive {
+  border-color: var(--color-primary);
+  background: rgba(100, 154, 79, 0.1);
+}
+
+.imageUploadIcon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.imageUploadText {
+  font-size: 0.9375rem;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.imageUploadHint {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.imagePreviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.imagePreviewItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-main);
+}
+
+.imagePreviewItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePreviewRemove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.imagePreviewItem:hover .imagePreviewRemove {
+  opacity: 1;
+}

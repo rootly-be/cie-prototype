@@ -1,27 +1,17 @@
+/**
+ * Authentication utilities for Node.js runtime
+ * This module includes bcrypt for password hashing which only works in Node.js
+ *
+ * For Edge runtime (middleware), use auth-edge.ts directly
+ */
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 
-// JWT Payload interface
-export interface JWTPayload {
-  adminId: string
-  email: string
-  iat?: number
-  exp?: number
-}
+// Re-export JWT functions from Edge-compatible module
+export { signJWT, verifyJWT } from './auth-edge'
+export type { JWTPayload } from './auth-edge'
 
 // Configuration
 const SALT_ROUNDS = 10
-
-// Ensure JWT_SECRET is defined
-function getJWTSecret(): string {
-  const secret = process.env.AUTH_SECRET
-  if (!secret) {
-    throw new Error('AUTH_SECRET environment variable is required')
-  }
-  return secret
-}
-
-const JWT_SECRET = getJWTSecret()
 
 /**
  * Hash a plain text password using bcrypt
@@ -43,30 +33,6 @@ export async function comparePassword(
   hash: string
 ): Promise<boolean> {
   return bcrypt.compare(password, hash)
-}
-
-/**
- * Sign a JWT token with 24h expiry
- * @param payload - JWT payload containing adminId and email
- * @returns JWT token string
- */
-export function signJWT(payload: { adminId: string; email: string }): string {
-  return jwt.sign(payload, JWT_SECRET, {
-    algorithm: 'HS256',
-    expiresIn: '24h'
-  })
-}
-
-/**
- * Verify and decode a JWT token
- * @param token - JWT token string
- * @returns Decoded JWT payload
- * @throws Error if token is invalid or expired
- */
-export function verifyJWT(token: string): JWTPayload {
-  return jwt.verify(token, JWT_SECRET, {
-    algorithms: ['HS256']
-  }) as JWTPayload
 }
 
 /**

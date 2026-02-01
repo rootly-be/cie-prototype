@@ -24,3 +24,7 @@ export { Textarea } from './Textarea';
 export { Select } from './Select';
 export type { SelectOption } from './Select';
 export { FormField } from './FormField';
+export { ActivityCard } from './ActivityCard';
+export { FilterBar } from './FilterBar';
+export type { FilterConfig, FilterOption } from './FilterBar';
+export { RegistrationLink } from './RegistrationLink';

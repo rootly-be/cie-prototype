@@ -1,0 +1,111 @@
+/**
+ * Support Section Styles
+ * Story 4.3: Create Contact Page (Task 5)
+ * Source: cie4/contact.html inline styles
+ */
+
+.sectionHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.sectionHeader h2 {
+  margin-bottom: 15px;
+}
+
+.sectionHeader p {
+  color: var(--text-muted);
+}
+
+.supportGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.supportCard {
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.supportCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.supportCard > p {
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.iconCircleLarge {
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+:global(html.dark-mode) .iconCircleLarge {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.supportMethod {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-sm);
+}
+
+.supportMethod:last-child {
+  margin-bottom: 0;
+}
+
+:global(html.dark-mode) .supportMethod {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.supportMethod h4 {
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.supportMethod p {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.iban {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+:global(html.dark-mode) .iban {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .supportGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .supportCard {
+    padding: 30px;
+  }
+}

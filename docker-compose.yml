@@ -1,0 +1,53 @@
+# =============================================================================
+# Docker Compose Configuration
+# Story 8.2: Create docker-compose for VPS Deployment
+#
+# Usage:
+#   Development: docker compose up
+#   Production:  docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # CIE Website Application
+  # ---------------------------------------------------------------------------
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cie-website
+
+    # Environment configuration (AC3)
+    env_file:
+      - .env
+
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/prod.db
+
+    # Port mapping
+    ports:
+      - "3000:3000"
+
+    # Volume for SQLite persistence (AC2)
+    volumes:
+      - cie-data:/app/data
+      - cie-uploads:/app/public/uploads
+
+    # Auto-restart policy (AC4 - NFR30)
+    restart: unless-stopped
+
+    # Health check configuration
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+# Named volumes for data persistence
+volumes:
+  cie-data:
+    driver: local
+  cie-uploads:
+    driver: local

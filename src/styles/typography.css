@@ -104,7 +104,8 @@ textarea:focus-visible {
 }
 
 /* =========================================
-   8. REDUCED MOTION - Accessibility
+   8. REDUCED MOTION - Accessibility (NFR22)
+   Story 4.5: Disable/minimize all motion for users who prefer reduced motion
    ========================================= */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -113,5 +114,12 @@ textarea:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Ensure smooth scroll is disabled on html element */
+  html {
+    scroll-behavior: auto !important;
   }
 }

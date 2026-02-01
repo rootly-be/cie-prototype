@@ -1,136 +1,82 @@
-import styles from "./page.module.css";
-import { Button, Badge, Card, ScrollReveal } from "@/components/ui";
-import { Hero, StatsBar, Section, Container } from "@/components/layout";
+import { Hero, StatsBar } from '@/components/layout'
+import { ScrollReveal } from '@/components/ui'
+import {
+  Presentation,
+  AgendaPreview,
+  ActivitiesGrid,
+  IdeasBox,
+  ContactSection,
+} from '@/components/sections'
 
-export default function Home() {
-  const stats = [
-    { value: "20+", label: "Années d'expérience" },
-    { value: "3000+", label: "Participants par an" },
-    { value: "50+", label: "Animations différentes" },
-  ];
+/**
+ * Homepage - CIE Enghien Public Website
+ * Story 4.1: Create Homepage
+ *
+ * Implements FR46 (design matches cie4), FR55 (StatsBar)
+ * ISR with 60s revalidation (AC5)
+ */
+
+// ISR Configuration - Revalidate every 60 seconds
+export const revalidate = 60
+
+// SEO Metadata
+export const metadata = {
+  title: "CIE Enghien - Centre d'Initiation à l'Environnement",
+  description:
+    "Au cœur du Parc d'Enghien, découvrez, apprenez et émerveillez-vous devant la biodiversité qui nous entoure. Animations scolaires, stages vacances et formations adultes.",
+  openGraph: {
+    title: "CIE Enghien - Centre d'Initiation à l'Environnement",
+    description:
+      "Au cœur du Parc d'Enghien, découvrez, apprenez et émerveillez-vous devant la biodiversité qui nous entoure.",
+    type: 'website',
+    locale: 'fr_BE',
+  },
+}
+
+// Stats matching cie4/index.html (FR55)
+const stats = [
+  { value: '+20 ans', label: "d'Expérience" },
+  { value: '3000+', label: 'Participants / an' },
+  { value: '100%', label: 'Passion Nature' },
+]
+
+export default async function HomePage() {
+  // TODO: Fetch upcoming events from database for AgendaPreview
+  // const events = await getUpcomingEvents(3)
 
   return (
     <>
+      {/* Hero Section - AC2 */}
       <Hero
         variant="full"
-        backgroundImage="https://picsum.photos/1920/1080?random=10"
-        title="CIE Enghien"
-        subtitle="Centre d'Initiation à l'Environnement - Découvrez la nature avec nous"
-      >
-        <Button variant="primary">Découvrir nos activités</Button>
-        <Button variant="outline">Agenda</Button>
-      </Hero>
+        backgroundImage="https://cieenghien.be/wp-content/uploads/2021/06/Image3bb.jpg"
+        title="Reconnecter l'humain à la nature"
+        subtitle="Au cœur du Parc d'Enghien, découvrez, apprenez et émerveillez-vous devant la biodiversité qui nous entoure."
+        ctaButtons={[
+          { label: "Voir l'agenda", href: '/agenda', variant: 'primary' },
+          { label: 'En savoir plus', href: '#presentation', variant: 'outline' },
+        ]}
+      />
 
+      {/* StatsBar - AC3 (FR55) */}
       <ScrollReveal>
         <StatsBar stats={stats} />
       </ScrollReveal>
 
-      <Section>
-        <Container>
-          <div className={styles.sectionHeader}>
-            <h2>Aperçu du Design System</h2>
-            <p>
-              Cette page démontre le design system cie4 avec les variables CSS,
-              la typographie et les composants UI.
-            </p>
-          </div>
-        </Container>
-      </Section>
+      {/* Presentation Section - AC4 */}
+      <Presentation />
 
-      <Section bgLight>
-        <Container>
-          <h3>Palette de Couleurs</h3>
-          <div className={styles.colorGrid}>
-            <div className={`${styles.colorSwatch} ${styles.swatchSapin}`}>
-              <span>L-sapin</span>
-            </div>
-            <div className={`${styles.colorSwatch} ${styles.swatchFeuille}`}>
-              <span>L-feuille</span>
-            </div>
-            <div className={`${styles.colorSwatch} ${styles.swatchEcorce}`}>
-              <span>L-ecorce</span>
-            </div>
-            <div className={`${styles.colorSwatch} ${styles.swatchEau}`}>
-              <span>L-eau</span>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      {/* Agenda Preview - AC4 */}
+      <AgendaPreview />
 
-      <Section>
-        <Container>
-          <h3>Boutons</h3>
-          <p>Composants Button avec variantes primary, outline et disabled.</p>
-          <div className={styles.buttonRow}>
-            <Button variant="primary">Primary</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="primary" disabled>
-              Disabled
-            </Button>
-          </div>
-        </Container>
-      </Section>
+      {/* Activities Grid - AC4 */}
+      <ActivitiesGrid />
 
-      <Section bgLight>
-        <Container>
-          <h3>Badges</h3>
-          <p>Badges de statut pour les activités (FR29-32).</p>
-          <div className={styles.badgeRow}>
-            <Badge variant="nouveau" />
-            <Badge variant="complet" />
-            <Badge variant="dernieres-places" />
-            <Badge variant="inscriptions-bientot" />
-          </div>
-        </Container>
-      </Section>
+      {/* Ideas Box - AC4 */}
+      <IdeasBox />
 
-      <Section>
-        <Container>
-          <h3>Cartes</h3>
-          <p>Composant Card avec image et contenu.</p>
-          <div className={styles.cardGrid}>
-            <ScrollReveal delay={0}>
-              <Card>
-                <Card.Image
-                  src="https://picsum.photos/400/220?random=1"
-                  alt="Animation nature"
-                />
-                <Card.Content>
-                  <h3>Animation Nature</h3>
-                  <p>
-                    Découvrez la faune et la flore de notre région à travers des
-                    activités ludiques.
-                  </p>
-                </Card.Content>
-              </Card>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <Card>
-                <Card.Image
-                  src="https://picsum.photos/400/220?random=2"
-                  alt="Stage découverte"
-                />
-                <Card.Content>
-                  <h3>Stage Découverte</h3>
-                  <p>
-                    Une semaine immersive pour les enfants pendant les vacances
-                    scolaires.
-                  </p>
-                </Card.Content>
-              </Card>
-            </ScrollReveal>
-          </div>
-        </Container>
-      </Section>
-
-      <Section bgLight>
-        <Container>
-          <p className={styles.hint}>
-            Ajoutez la classe <code>dark-mode</code> au body dans DevTools pour
-            tester le mode sombre. Scrollez pour voir la transition du Navbar.
-          </p>
-        </Container>
-      </Section>
+      {/* Contact Section - AC4 */}
+      <ContactSection />
     </>
-  );
+  )
 }

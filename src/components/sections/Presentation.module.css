@@ -1,0 +1,91 @@
+/**
+ * Presentation Section Styles
+ * Story 4.1: Create Homepage (Task 4)
+ * Source: cie4/style.css presentation section
+ */
+
+.presentationGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.subheading {
+  font-size: var(--text-sm);
+  color: var(--color-detail);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  margin-bottom: 20px;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.featureItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-card);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
+}
+
+.featureItem h4 {
+  font-size: var(--text-lg);
+  margin-bottom: 5px;
+  color: var(--color-primary);
+}
+
+.featureDescription {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.presentationImg {
+  position: relative;
+  height: 450px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.presentationImg img {
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .presentationGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .presentationImg {
+    height: 300px;
+    order: -1;
+  }
+}

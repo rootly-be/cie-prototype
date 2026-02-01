@@ -44,13 +44,16 @@
 }
 
 /* =========================================
-   3. PREFERS-REDUCED-MOTION - Accessibility
+   3. PREFERS-REDUCED-MOTION - Accessibility (NFR22)
+   Story 4.5: Show content immediately without movement
    Note: Global animation/transition reset is in typography.css
-   This only handles .animate-on-scroll specific styles
    ========================================= */
 @media (prefers-reduced-motion: reduce) {
   .animate-on-scroll {
+    /* Show content immediately */
     opacity: 1;
     transform: none;
+    /* Remove any stagger delays */
+    transition-delay: 0s !important;
   }
 }

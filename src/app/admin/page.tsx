@@ -1,37 +1,110 @@
 import { Metadata } from 'next'
-import { Container } from '@/components/layout/Container'
-import { Section } from '@/components/layout/Section'
+import Link from 'next/link'
+import { prisma } from '@/lib/prisma'
+import styles from './admin.module.css'
+
+// Force dynamic rendering - admin pages need real-time data
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard | CIE Enghien',
   description: 'Espace d\'administration CIE Enghien',
 }
 
-/**
- * Admin Dashboard Page (Placeholder)
- * Story 2.4: Placeholder admin page for login redirect
- *
- * This page serves as the landing page after successful authentication.
- * Full admin functionality will be implemented in Epic 3 (Content Management).
- *
- * Protected by middleware (Story 2.3) - requires valid JWT cookie.
- */
-export default function AdminPage() {
+interface StatCardProps {
+  title: string
+  value: number
+  published: number
+  href: string
+  icon: string
+}
+
+function StatCard({ title, value, published, href, icon }: StatCardProps) {
   return (
-    <Container>
-      <Section>
-        <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '16px' }}>
-            Admin Dashboard
-          </h1>
-          <p style={{ fontSize: '1.125rem', color: 'var(--text-muted)', marginBottom: '32px' }}>
-            Bienvenue dans l'espace d'administration CIE Enghien
-          </p>
-          <p style={{ color: 'var(--text-muted)' }}>
-            Fonctionnalités d'administration à venir dans Epic 3...
-          </p>
+    <Link href={href} className={styles.statCard}>
+      <div className={styles.statIcon}>{icon}</div>
+      <div className={styles.statContent}>
+        <div className={styles.statTitle}>{title}</div>
+        <div className={styles.statValue}>{value}</div>
+        <div className={styles.statMeta}>
+          {published} publiés / {value - published} brouillons
         </div>
-      </Section>
-    </Container>
+      </div>
+    </Link>
+  )
+}
+
+/**
+ * Admin Dashboard Page
+ * Story 3.7: Build Admin Content Pages
+ *
+ * Shows overview statistics and quick links to content management.
+ */
+export default async function AdminDashboard() {
+  // Fetch counts for each content type
+  const [
+    animationsTotal,
+    animationsPublished,
+    formationsTotal,
+    formationsPublished,
+    stagesTotal,
+    stagesPublished,
+  ] = await Promise.all([
+    prisma.animation.count(),
+    prisma.animation.count({ where: { published: true } }),
+    prisma.formation.count(),
+    prisma.formation.count({ where: { published: true } }),
+    prisma.stage.count(),
+    prisma.stage.count({ where: { published: true } }),
+  ])
+
+  return (
+    <div>
+      <div className={styles.pageHeader}>
+        <h1 className={styles.pageTitle}>Tableau de bord</h1>
+      </div>
+
+      <div className={styles.statsGrid}>
+        <StatCard
+          title="Animations"
+          value={animationsTotal}
+          published={animationsPublished}
+          href="/admin/animations"
+          icon="🎓"
+        />
+        <StatCard
+          title="Formations"
+          value={formationsTotal}
+          published={formationsPublished}
+          href="/admin/formations"
+          icon="📚"
+        />
+        <StatCard
+          title="Stages"
+          value={stagesTotal}
+          published={stagesPublished}
+          href="/admin/stages"
+          icon="🏕️"
+        />
+      </div>
+
+      <div className={styles.quickActions}>
+        <h2 className={styles.sectionTitle}>Actions rapides</h2>
+        <div className={styles.actionGrid}>
+          <Link href="/admin/animations/new" className={styles.quickAction}>
+            <span className={styles.quickActionIcon}>➕</span>
+            <span>Nouvelle animation</span>
+          </Link>
+          <Link href="/admin/formations/new" className={styles.quickAction}>
+            <span className={styles.quickActionIcon}>➕</span>
+            <span>Nouvelle formation</span>
+          </Link>
+          <Link href="/admin/stages/new" className={styles.quickAction}>
+            <span className={styles.quickActionIcon}>➕</span>
+            <span>Nouveau stage</span>
+          </Link>
+        </div>
+      </div>
+    </div>
   )
 }

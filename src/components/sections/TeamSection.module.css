@@ -1,0 +1,121 @@
+/**
+ * Team Section Styles
+ * Story 4.2: Create About Page (Task 4)
+ * Source: cie4/cie.html inline styles
+ */
+
+.sectionHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.sectionHeader h2 {
+  margin-bottom: 15px;
+}
+
+.sectionHeader p {
+  color: var(--text-muted);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.teamCard {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+
+.teamCard:hover {
+  transform: translateY(-5px);
+}
+
+.teamCard h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.teamCard h4 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.teamPhoto {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6b7b8a 0%, #4a5a6a 100%);
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.teamPhoto img {
+  object-fit: cover;
+}
+
+.photoPlaceholder {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.teamRole {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* CA Section */
+.caSection {
+  margin-top: 60px;
+}
+
+.caTitle {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.caGrid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.caCard {
+  min-width: 200px;
+  padding: 25px 20px;
+}
+
+.caPhoto {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.caPhoto .photoPlaceholder {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+  }
+}

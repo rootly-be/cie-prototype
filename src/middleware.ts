@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyJWT } from '@/lib/auth'
+import { verifyJWT } from '@/lib/auth-edge'
 import { COOKIE_NAMES } from '@/lib/constants'
 
 // M1 fix: Use environment-based logging
@@ -31,7 +31,7 @@ function logError(message: string, data?: Record<string, unknown>) {
  * @param request - Next.js request object
  * @returns Response (redirect or next)
  */
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   // Get JWT token from httpOnly cookie (set by Story 2.2 login)
   const tokenCookie = request.cookies.get(COOKIE_NAMES.AUTH_TOKEN)
 
@@ -52,8 +52,8 @@ export function middleware(request: NextRequest) {
   }
 
   try {
-    // AC1: Validate JWT token
-    const payload = verifyJWT(tokenCookie.value)
+    // AC1: Validate JWT token (async with jose library)
+    const payload = await verifyJWT(tokenCookie.value)
 
     // AC3: Attach admin context to request headers
     // These headers will be available to all downstream route handlers

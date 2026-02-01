@@ -1,0 +1,74 @@
+# =============================================================================
+# Docker Compose Production Overrides
+# Story 8.2: Create docker-compose for VPS Deployment
+# Story 8.3: Configure Caddy for SSL and Reverse Proxy
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # Caddy Reverse Proxy (Story 8.3)
+  # ---------------------------------------------------------------------------
+  caddy:
+    image: caddy:2-alpine
+    container_name: cie-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+      - caddy-logs:/var/log/caddy
+    environment:
+      - DOMAIN=${DOMAIN:-localhost}
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ---------------------------------------------------------------------------
+  # Next.js Application
+  # ---------------------------------------------------------------------------
+  app:
+    # Use pre-built image in production
+    image: cie-website:latest
+    build: !reset null
+
+    # Don't expose ports directly - Caddy handles external traffic
+    ports: !reset []
+    expose:
+      - "3000"
+
+    # Resource limits for production stability
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    # Production restart policy
+    restart: always
+
+# Additional volumes for Caddy
+volumes:
+  caddy-data:
+  caddy-config:
+  caddy-logs:

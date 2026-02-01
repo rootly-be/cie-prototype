@@ -1,0 +1,72 @@
+/**
+ * Formations List Page Styles
+ * Story 5.2: Build Formations List Page
+ */
+
+/* Filter skeleton for Suspense fallback */
+.filterSkeleton {
+  height: 80px;
+  background: linear-gradient(90deg, var(--border-main) 25%, var(--bg-card) 50%, var(--border-main) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+  margin-bottom: 32px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Results count */
+.resultsCount {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* Card grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Empty state */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-main);
+}
+
+.emptyState p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.emptyState p:first-child {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}

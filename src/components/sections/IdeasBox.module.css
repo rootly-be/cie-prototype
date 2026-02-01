@@ -1,0 +1,47 @@
+/**
+ * Ideas Box Section Styles
+ * Story 4.1: Create Homepage (Task 7)
+ * Source: cie4/style.css ideas section
+ */
+
+.ideasBox {
+  text-align: center;
+}
+
+.ideasBox h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.description {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: var(--text-muted);
+}
+
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex-grow: 1;
+}
+
+.thankYou {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 600px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .form button {
+    width: 100%;
+  }
+}

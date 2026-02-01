@@ -1,0 +1,69 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+.next
+out
+build
+dist
+
+# Testing
+coverage
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+__tests__
+vitest.config.ts
+
+# Environment files (secrets should be passed via docker -e or compose)
+.env
+.env.*
+!.env.example
+
+# IDE and editor
+.vscode
+.idea
+*.swp
+*.swo
+.cursor
+.windsurf
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.docker
+
+# Documentation (not needed in production)
+docs
+*.md
+!README.md
+
+# BMAD (development only)
+_bmad
+_bmad-output
+
+# Claude Code
+.claude
+
+# Misc
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database (for development only - production uses external)
+prisma/*.db
+prisma/*.db-journal
+
+# Temporary files
+tmp
+temp
+*.tmp

@@ -3,6 +3,7 @@ import { Playfair_Display, Lora } from "next/font/google";
 import { APP_NAME } from "@/lib/config";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Navbar, Footer } from "@/components/layout";
+import { SkipLink } from "@/components/accessibility";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -50,8 +51,11 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
+          <SkipLink />
           <Navbar />
-          <main>{children}</main>
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

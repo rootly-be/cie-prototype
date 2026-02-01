@@ -1,0 +1,51 @@
+/**
+ * Contact Form Styles
+ * Story 4.3: Create Contact Page (Task 3)
+ * Source: cie4/contact.html form styles
+ */
+
+.formBox {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  box-shadow: var(--shadow-card);
+}
+
+.formBox h3 {
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.submitBtn {
+  width: 100%;
+}
+
+.formError {
+  background: rgba(197, 48, 48, 0.1);
+  color: var(--color-error);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.successMessage {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.successTitle {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.successMessage p {
+  color: var(--text-muted);
+  margin: 0;
+}

@@ -4,9 +4,10 @@ interface SectionProps {
   children: React.ReactNode;
   className?: string;
   bgLight?: boolean;
+  id?: string;
 }
 
-export function Section({ children, className, bgLight = false }: SectionProps) {
+export function Section({ children, className, bgLight = false, id }: SectionProps) {
   const sectionClasses = [
     styles.section,
     bgLight ? styles.bgLight : '',
@@ -15,5 +16,5 @@ export function Section({ children, className, bgLight = false }: SectionProps) 
     .filter(Boolean)
     .join(' ');
 
-  return <section className={sectionClasses}>{children}</section>;
+  return <section id={id} className={sectionClasses}>{children}</section>;
 }

@@ -1,0 +1,145 @@
+/**
+ * ActivityCard Component Styles
+ * Story 5.6: Create ActivityCard for All Content Types
+ *
+ * Based on cie4 card design with enhancements for activity display.
+ */
+
+/* =========================================
+   Card Container (Link wrapper)
+   ========================================= */
+.activityCard {
+  display: block;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-main);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
+}
+
+.activityCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(26, 74, 38, 0.12);
+}
+
+:global(html.dark-mode) .activityCard:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.activityCard:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   Image Area
+   ========================================= */
+.imageWrapper {
+  position: relative;
+  height: 200px;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.activityCard:hover .image {
+  transform: scale(1.05);
+}
+
+/* Badge positioning */
+.badgeWrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+}
+
+/* =========================================
+   Content Area
+   ========================================= */
+.content {
+  padding: 20px;
+}
+
+/* Category label */
+.category {
+  display: inline-block;
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* Title */
+.title {
+  font-family: var(--font-heading), 'Playfair Display', serif;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+/* Description */
+.description {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+/* =========================================
+   Metadata Area
+   ========================================= */
+.metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-main);
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+}
+
+.metaLabel {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.metaValue {
+  color: var(--color-detail);
+  font-weight: 600;
+}
+
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 768px) {
+  .imageWrapper {
+    height: 180px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: var(--text-base);
+  }
+}

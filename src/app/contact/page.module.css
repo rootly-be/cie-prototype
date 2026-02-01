@@ -1,0 +1,19 @@
+/**
+ * Contact Page Styles
+ * Story 4.3: Create Contact Page
+ * Source: cie4/contact.html inline styles
+ */
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

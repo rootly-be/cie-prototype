@@ -1,0 +1,53 @@
+/**
+ * Park Section Styles
+ * Story 4.2: Create About Page (Task 5)
+ * Source: cie4/cie.html inline styles
+ */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.subheading {
+  font-size: var(--text-sm);
+  color: var(--color-detail);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  margin-bottom: 20px;
+}
+
+.imageContainer {
+  position: relative;
+  height: 400px;
+  border-radius: var(--radius-lg) 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.imageContainer img {
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .imageContainer {
+    height: 300px;
+  }
+}

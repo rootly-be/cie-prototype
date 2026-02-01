@@ -1,0 +1,77 @@
+/**
+ * Activities Grid Section Styles
+ * Story 4.1: Create Homepage (Task 6)
+ * Source: cie4/style.css activities section
+ */
+
+.sectionHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.sectionHeader h2 {
+  margin-bottom: 15px;
+}
+
+.sectionHeader p {
+  color: var(--text-muted);
+}
+
+.activitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.activityCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activityCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(26, 74, 38, 0.15);
+}
+
+.activityImg {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.activityImg img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.activityCard:hover .activityImg img {
+  transform: scale(1.05);
+}
+
+.activityLink {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.activityLink:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 992px) {
+  .activitiesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .activitiesGrid {
+    grid-template-columns: 1fr;
+  }
+}

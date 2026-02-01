@@ -59,54 +59,54 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3: Content Management
-  epic-3: in-progress
+  epic-3: done
   3-1-create-full-database-schema: done
   3-2-build-animation-crud-api: done
   3-3-build-formation-crud-api: done
   3-4-build-stage-crud-api: done
   3-5-build-category-tag-management-api: done
-  3-6-implement-image-upload-to-s3: backlog
-  3-7-build-admin-content-pages: backlog
+  3-6-implement-image-upload-to-s3: done
+  3-7-build-admin-content-pages: done
   epic-3-retrospective: optional
 
   # Epic 4: Public Website - Static Pages
-  epic-4: backlog
-  4-1-create-homepage: backlog
-  4-2-create-about-page: backlog
-  4-3-create-contact-page-with-form: backlog
-  4-4-implement-skip-link-keyboard-navigation: backlog
-  4-5-implement-prefers-reduced-motion: backlog
+  epic-4: done
+  4-1-create-homepage: done
+  4-2-create-about-page: done
+  4-3-create-contact-page-with-form: done
+  4-4-implement-skip-link-keyboard-navigation: done
+  4-5-implement-prefers-reduced-motion: done
   epic-4-retrospective: optional
 
   # Epic 5: Dynamic Content Discovery
-  epic-5: backlog
-  5-1-build-animations-list-page: backlog
-  5-2-build-formations-list-page: backlog
-  5-3-build-stages-list-page: backlog
-  5-4-build-detail-pages: backlog
-  5-5-create-reusable-filterbar: backlog
-  5-6-create-activitycard-component: backlog
+  epic-5: done
+  5-1-build-animations-list-page: done
+  5-2-build-formations-list-page: done
+  5-3-build-stages-list-page: done
+  5-4-build-detail-pages: done
+  5-5-create-reusable-filterbar: done
+  5-6-create-activitycard-component: done
   epic-5-retrospective: optional
 
   # Epic 6: Agenda System
-  epic-6: backlog
-  6-1-build-agenda-event-crud-api: backlog
+  epic-6: in-progress
+  6-1-build-agenda-event-crud-api: done
   6-2-implement-auto-generated-agenda: backlog
   6-3-build-agenda-page: backlog
   epic-6-retrospective: optional
 
   # Epic 7: Billetweb Integration & Status Badges
-  epic-7: backlog
-  7-1-create-billetweb-sync-service: backlog
-  7-2-implement-status-badge-logic: backlog
-  7-3-add-registration-links: backlog
-  7-4-create-scheduled-sync-job: backlog
+  epic-7: done
+  7-1-create-billetweb-sync-service: done
+  7-2-implement-status-badge-logic: done
+  7-3-add-registration-links: done
+  7-4-create-scheduled-sync-job: done
   epic-7-retrospective: optional
 
   # Epic 8: Production Deployment
-  epic-8: backlog
-  8-1-create-docker-multi-stage-build: backlog
-  8-2-create-docker-compose: backlog
-  8-3-configure-caddy-ssl: backlog
-  8-4-set-up-backup-monitoring: backlog
+  epic-8: done
+  8-1-create-docker-multi-stage-build: done
+  8-2-create-docker-compose: done
+  8-3-configure-caddy-ssl: done
+  8-4-set-up-backup-monitoring: done
   epic-8-retrospective: optional

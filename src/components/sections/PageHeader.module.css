@@ -1,0 +1,50 @@
+/**
+ * Page Header Styles
+ * Story 4.2: Create About Page (Task 2)
+ * Source: cie4/style.css page-header section
+ */
+
+.pageHeader {
+  background: linear-gradient(135deg, var(--L-sapin) 0%, #2d5a3a 100%);
+  color: white;
+  padding: 120px 24px 80px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pageHeader h1 {
+  color: white;
+  font-size: var(--heading-lg);
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pageHeader p {
+  font-size: var(--text-xl);
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Dark mode */
+:global(html.dark-mode) .pageHeader {
+  background: linear-gradient(135deg, var(--D-surface) 0%, #1a2a1f 100%);
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    padding: 100px 20px 60px;
+  }
+
+  .pageHeader h1 {
+    font-size: var(--heading-md);
+  }
+
+  .pageHeader p {
+    font-size: var(--text-lg);
+  }
+}

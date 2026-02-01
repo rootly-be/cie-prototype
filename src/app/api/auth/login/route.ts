@@ -70,8 +70,8 @@ export async function POST(request: NextRequest) {
     // C2 fix: Reset rate limit on successful login
     resetRateLimit(identifier)
 
-    // Sign JWT token
-    const token = signJWT({
+    // Sign JWT token (async with jose library)
+    const token = await signJWT({
       adminId: admin.id,
       email: admin.email
     })
