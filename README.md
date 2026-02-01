@@ -34,26 +34,26 @@ npm run db:seed
 npm run dev
 ```
 
-Le site est accessible sur http://localhost:3000
+Le site est accessible sur <http://localhost:3000>
 
 ### Accès Admin
 
-- URL: http://localhost:3000/admin
+- URL: <http://localhost:3000/admin>
 - Email: `admin@cie-enghien.be`
 - Password: `admin123`
 
 ## Scripts disponibles
 
-| Commande | Description |
-|----------|-------------|
-| `npm run dev` | Serveur de développement |
-| `npm run build` | Build de production |
-| `npm run start` | Démarrer le build de production |
-| `npm run lint` | Linter ESLint |
-| `npm run db:generate` | Générer le client Prisma |
-| `npm run db:push` | Appliquer le schéma à la DB |
-| `npm run db:seed` | Créer admin + données de base |
-| `npm run db:studio` | Interface Prisma Studio |
+| Commande             | Description                     |
+| -------------------- | ------------------------------- |
+| `npm run dev`        | Serveur de développement        |
+| `npm run build`      | Build de production             |
+| `npm run start`      | Démarrer le build de production |
+| `npm run lint`       | Linter ESLint                   |
+| `npm run db:generate`| Générer le client Prisma        |
+| `npm run db:push`    | Appliquer le schéma à la DB     |
+| `npm run db:seed`    | Créer admin + données de base   |
+| `npm run db:studio`  | Interface Prisma Studio         |
 
 ## Variables d'environnement
 
@@ -103,7 +103,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 ## Structure du projet
 
-```
+```text
 src/
 ├── app/                    # Pages Next.js App Router
 │   ├── admin/             # Pages d'administration
