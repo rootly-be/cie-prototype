@@ -11,3 +11,4 @@ export { Navbar } from './Navbar';
 export { Footer } from './Footer';
 export { Hero } from './Hero';
 export { StatsBar } from './StatsBar';
+export { ConditionalLayout } from './ConditionalLayout';

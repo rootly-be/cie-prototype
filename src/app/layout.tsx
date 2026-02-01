@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Lora } from "next/font/google";
 import { APP_NAME } from "@/lib/config";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { Navbar, Footer } from "@/components/layout";
+import { ConditionalLayout } from "@/components/layout";
 import { SkipLink } from "@/components/accessibility";
 import "./globals.css";
 
@@ -52,11 +52,9 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <SkipLink />
-          <Navbar />
-          <main id="main-content" tabIndex={-1}>
+          <ConditionalLayout>
             {children}
-          </main>
-          <Footer />
+          </ConditionalLayout>
         </ThemeProvider>
       </body>
     </html>
