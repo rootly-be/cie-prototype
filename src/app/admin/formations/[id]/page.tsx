@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input, Textarea, Select } from '@/components/ui'
-import { ContentPreview } from '@/components/admin'
+import { ContentPreview, ImageUpload } from '@/components/admin'
 import styles from '../../admin.module.css'
 
 interface Category {
@@ -16,6 +16,12 @@ interface Tag {
   nom: string
 }
 
+interface UploadedImage {
+  id: string
+  url: string
+  alt: string | null
+}
+
 interface Formation {
   id: string
   titre: string
@@ -26,6 +32,7 @@ interface Formation {
   published: boolean
   categorie: Category
   tags: Tag[]
+  images: UploadedImage[]
 }
 
 /**
@@ -53,6 +60,7 @@ export default function EditFormationPage({
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isFull, setIsFull] = useState(false)
   const [published, setPublished] = useState(false)
+  const [images, setImages] = useState<UploadedImage[]>([])
 
   // Errors
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -77,6 +85,7 @@ export default function EditFormationPage({
           setSelectedTags(formation.tags.map((t) => t.id))
           setIsFull(formation.isFull)
           setPublished(formation.published)
+          setImages(formation.images || [])
         } else {
           setNotFound(true)
         }
@@ -128,6 +137,7 @@ export default function EditFormationPage({
           categorieId,
           billetwebUrl: billetwebUrl || null,
           tagIds: selectedTags,
+          imageIds: images.map((img) => img.id),
           isFull,
           published,
         }),
@@ -253,6 +263,17 @@ export default function EditFormationPage({
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className={styles.formSection}>
+              <h2 className={styles.formSectionTitle}>Images</h2>
+              <ImageUpload
+                entityType="formation"
+                entityId={id}
+                images={images}
+                onImagesChange={setImages}
+                maxImages={5}
+              />
             </div>
 
             <div className={styles.formSection}>

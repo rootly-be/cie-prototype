@@ -5,3 +5,4 @@
 
 export { StatusToggle } from './StatusToggle'
 export { ContentPreview } from './ContentPreview'
+export { ImageUpload } from './ImageUpload'

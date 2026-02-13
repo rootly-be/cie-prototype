@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getAdminFromRequest } from '@/lib/auth'
 import { stageCreateSchema, stageQuerySchema } from '@/lib/validations/stage'
+import { extractBilletwebId } from '@/lib/validations/billetweb'
 import { AUDIT_ACTIONS, ERROR_CODES } from '@/lib/constants'
 import { Prisma } from '@/generated/prisma/client'
 import { z } from 'zod'
@@ -134,6 +135,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validated = stageCreateSchema.parse(body)
 
+    // Extract billetwebId from URL if not provided
+    const billetwebId = validated.billetwebId || extractBilletwebId(validated.billetwebUrl)
+
     // Create stage with relations
     const stage = await prisma.stage.create({
       data: {
@@ -146,7 +150,7 @@ export async function POST(request: NextRequest) {
         dateFin: validated.dateFin,
         prix: validated.prix,
         billetwebUrl: validated.billetwebUrl,
-        billetwebId: validated.billetwebId,
+        billetwebId: billetwebId,
         placesTotal: validated.placesTotal,
         placesLeft: validated.placesLeft,
         isFull: validated.isFull,

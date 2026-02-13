@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input, Textarea, Select } from '@/components/ui'
-import { ContentPreview } from '@/components/admin'
-import { NIVEAUX_OPTIONS } from '@/lib/constants/niveaux'
+import { ContentPreview, ImageUpload } from '@/components/admin'
 import styles from '../../admin.module.css'
 
 interface Category {
@@ -15,6 +14,18 @@ interface Category {
 interface Tag {
   id: string
   nom: string
+}
+
+interface Niveau {
+  id: string
+  code: string
+  label: string
+}
+
+interface UploadedImage {
+  id: string
+  url: string
+  alt: string | null
 }
 
 /**
@@ -28,6 +39,7 @@ export default function NewAnimationPage() {
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState<Category[]>([])
   const [tags, setTags] = useState<Tag[]>([])
+  const [niveaux, setNiveaux] = useState<Niveau[]>([])
 
   // Form state
   const [titre, setTitre] = useState('')
@@ -36,22 +48,25 @@ export default function NewAnimationPage() {
   const [categorieId, setCategorieId] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [published, setPublished] = useState(false)
+  const [images, setImages] = useState<UploadedImage[]>([])
 
   // Errors
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  // Fetch categories and tags
+  // Fetch categories, tags and niveaux
   useEffect(() => {
     Promise.all([
       fetch('/api/admin/categories?type=animation').then((r) => r.json()),
       fetch('/api/admin/tags').then((r) => r.json()),
+      fetch('/api/admin/niveaux').then((r) => r.json()),
     ])
-      .then(([catData, tagData]) => {
+      .then(([catData, tagData, nivData]) => {
         if (catData.data) setCategories(catData.data)
         if (tagData.data) setTags(tagData.data)
+        if (nivData.data) setNiveaux(nivData.data)
       })
       .catch((error) => {
-        console.error('Failed to load categories/tags:', error)
+        console.error('Failed to load data:', error)
         setErrors({ form: 'Erreur de chargement des données' })
       })
   }, [])
@@ -99,6 +114,7 @@ export default function NewAnimationPage() {
           niveau,
           categorieId,
           tagIds: selectedTags,
+          imageIds: images.map((img) => img.id),
           published,
         }),
       })
@@ -163,7 +179,7 @@ export default function NewAnimationPage() {
                 label="Niveau scolaire"
                 value={niveau}
                 onChange={(e) => setNiveau(e.target.value)}
-                options={[...NIVEAUX_OPTIONS]}
+                options={niveaux.map((n) => ({ value: n.code, label: n.label }))}
                 placeholder="Sélectionnez un niveau"
                 error={errors.niveau}
                 required
@@ -202,6 +218,16 @@ export default function NewAnimationPage() {
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className={styles.formSection}>
+              <h2 className={styles.formSectionTitle}>Images</h2>
+              <ImageUpload
+                entityType="animation"
+                images={images}
+                onImagesChange={setImages}
+                maxImages={5}
+              />
             </div>
 
             <div className={styles.formSection}>

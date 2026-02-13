@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input, Textarea, Select } from '@/components/ui'
-import { ContentPreview } from '@/components/admin'
+import { ContentPreview, ImageUpload } from '@/components/admin'
 import styles from '../../admin.module.css'
 
 interface Category {
@@ -14,6 +14,12 @@ interface Category {
 interface Tag {
   id: string
   nom: string
+}
+
+interface UploadedImage {
+  id: string
+  url: string
+  alt: string | null
 }
 
 /**
@@ -34,6 +40,7 @@ export default function NewFormationPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isFull, setIsFull] = useState(false)
   const [published, setPublished] = useState(false)
+  const [images, setImages] = useState<UploadedImage[]>([])
 
   // Errors
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -93,6 +100,7 @@ export default function NewFormationPage() {
           categorieId,
           billetwebUrl: billetwebUrl || null,
           tagIds: selectedTags,
+          imageIds: images.map((img) => img.id),
           isFull,
           published,
         }),
@@ -194,6 +202,16 @@ export default function NewFormationPage() {
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className={styles.formSection}>
+              <h2 className={styles.formSectionTitle}>Images</h2>
+              <ImageUpload
+                entityType="formation"
+                images={images}
+                onImagesChange={setImages}
+                maxImages={5}
+              />
             </div>
 
             <div className={styles.formSection}>

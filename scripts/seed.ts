@@ -89,6 +89,28 @@ async function main() {
     }
   }
 
+  // Create default niveaux (school levels)
+  const niveaux = [
+    { code: 'M1', label: 'Maternelle 1', ordre: 1 },
+    { code: 'M2/M3', label: 'Maternelle 2-3', ordre: 2 },
+    { code: 'P1-P2', label: 'Primaire 1-2', ordre: 3 },
+    { code: 'P3-P4', label: 'Primaire 3-4', ordre: 4 },
+    { code: 'P5-P6', label: 'Primaire 5-6', ordre: 5 },
+    { code: 'S1-S3', label: 'Secondaire 1-3', ordre: 6 },
+    { code: 'S4-S6', label: 'Secondaire 4-6', ordre: 7 },
+  ]
+
+  for (const niveau of niveaux) {
+    const existing = await prisma.niveau.findUnique({
+      where: { code: niveau.code }
+    })
+
+    if (!existing) {
+      await prisma.niveau.create({ data: niveau })
+      console.log(`✓ Niveau created: ${niveau.code} (${niveau.label})`)
+    }
+  }
+
   console.log('')
   console.log('🎉 Seed completed!')
   console.log('')

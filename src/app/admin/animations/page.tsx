@@ -5,8 +5,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui'
 import { StatusToggle } from '@/components/admin'
-import { NIVEAUX } from '@/lib/constants/niveaux'
 import styles from '../admin.module.css'
+
+interface Niveau {
+  id: string
+  code: string
+  label: string
+}
 
 interface Animation {
   id: string
@@ -41,6 +46,7 @@ export default function AnimationsListPage() {
   const router = useRouter()
   const [animations, setAnimations] = useState<Animation[]>([])
   const [categories, setCategories] = useState<Category[]>([])
+  const [niveaux, setNiveaux] = useState<Niveau[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -53,12 +59,15 @@ export default function AnimationsListPage() {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
 
-  // Fetch categories for filter dropdown
+  // Fetch categories and niveaux for filter dropdowns
   useEffect(() => {
-    fetch('/api/admin/categories?type=animation')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) setCategories(data.data)
+    Promise.all([
+      fetch('/api/admin/categories?type=animation').then((res) => res.json()),
+      fetch('/api/admin/niveaux').then((res) => res.json()),
+    ])
+      .then(([catData, nivData]) => {
+        if (catData.data) setCategories(catData.data)
+        if (nivData.data) setNiveaux(nivData.data)
       })
       .catch(console.error)
   }, [])
@@ -146,6 +155,12 @@ export default function AnimationsListPage() {
       <div className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Animations</h1>
         <div className={styles.pageActions}>
+          <Link href="/admin/animations/niveaux">
+            <Button variant="outline">Niveaux</Button>
+          </Link>
+          <Link href="/admin/animations/categories">
+            <Button variant="outline">Catégories</Button>
+          </Link>
           <Link href="/admin/animations/new">
             <Button variant="primary">+ Nouvelle animation</Button>
           </Link>
@@ -165,9 +180,9 @@ export default function AnimationsListPage() {
             }}
           >
             <option value="">Tous les niveaux</option>
-            {NIVEAUX.map((n) => (
-              <option key={n} value={n}>
-                {n}
+            {niveaux.map((n) => (
+              <option key={n.id} value={n.code}>
+                {n.label}
               </option>
             ))}
           </select>

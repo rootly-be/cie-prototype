@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getAdminFromRequest } from '@/lib/auth'
 import { formationCreateSchema, formationQuerySchema } from '@/lib/validations/formation'
+import { extractBilletwebId } from '@/lib/validations/billetweb'
 import { AUDIT_ACTIONS, ERROR_CODES } from '@/lib/constants'
 import { Prisma } from '@/generated/prisma/client'
 import { z } from 'zod'
@@ -124,11 +125,18 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validated = formationCreateSchema.parse(body)
 
+    // Extract billetwebId from URL if not provided
+    const billetwebId = validated.billetwebId || extractBilletwebId(validated.billetwebUrl)
+
     // Create formation with relations
     const formation = await prisma.formation.create({
       data: {
         titre: validated.titre,
         description: validated.description,
+        billetwebUrl: validated.billetwebUrl,
+        billetwebId: billetwebId,
+        placesTotal: validated.placesTotal,
+        placesLeft: validated.placesLeft,
         isFull: validated.isFull,
         published: validated.published,
         categorieId: validated.categorieId,

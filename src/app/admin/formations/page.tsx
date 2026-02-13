@@ -159,6 +159,9 @@ export default function FormationsListPage() {
       <div className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Formations</h1>
         <div className={styles.pageActions}>
+          <Link href="/admin/formations/categories">
+            <Button variant="outline">Catégories</Button>
+          </Link>
           <Link href="/admin/formations/new">
             <Button variant="primary">+ Nouvelle formation</Button>
           </Link>

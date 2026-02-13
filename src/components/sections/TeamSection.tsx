@@ -1,31 +1,23 @@
 import Image from 'next/image'
+import { prisma } from '@/lib/prisma'
 import { Section, Container } from '@/components/layout'
 import { ScrollReveal } from '@/components/ui'
 import styles from './TeamSection.module.css'
 
-interface TeamMember {
-  name: string
-  role: string
-  photo?: string
-}
-
-const animators: TeamMember[] = [
-  { name: 'Aurore Berger', role: 'Coordinatrice' },
-  { name: 'Théo Raevens', role: 'Animateur' },
-  { name: 'Flora Morelle', role: 'Animatrice' },
-]
-
-const caMembers: TeamMember[] = [
-  { name: 'Muriel Mozelsio', role: 'Présidente' },
-  { name: 'Grégory Michel', role: 'Vice-président' },
-]
-
 /**
  * Team Section Component
  * Story 4.2: Create About Page (Task 4)
- * Source: cie4/cie.html lines 76-133
+ * Fetches team members from database
  */
-export function TeamSection() {
+export async function TeamSection() {
+  // Fetch team members from database
+  const members = await prisma.teamMember.findMany({
+    orderBy: [{ ordre: 'asc' }, { nom: 'asc' }],
+  })
+
+  const equipeMembers = members.filter((m) => m.type === 'equipe')
+  const caMembers = members.filter((m) => m.type === 'ca')
+
   return (
     <Section bgLight id="equipe">
       <Container>
@@ -36,56 +28,67 @@ export function TeamSection() {
           </div>
         </ScrollReveal>
 
-        {/* Animators Grid */}
-        <div className={styles.teamGrid}>
-          {animators.map((member, index) => (
-            <ScrollReveal key={member.name} delay={index * 0.1}>
-              <div className={styles.teamCard}>
-                <div className={styles.teamPhoto}>
-                  {member.photo ? (
-                    <Image
-                      src={member.photo}
-                      alt={member.name}
-                      fill
-                      sizes="150px"
-                    />
-                  ) : (
-                    <span className={styles.photoPlaceholder}>Photo</span>
-                  )}
-                </div>
-                <h3>{member.name}</h3>
-                <p className={styles.teamRole}>{member.role}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {/* CA Section */}
-        <div className={styles.caSection}>
-          <h3 className={styles.caTitle}>Conseil d&apos;Administration</h3>
-          <div className={styles.caGrid}>
-            {caMembers.map((member, index) => (
-              <ScrollReveal key={member.name} delay={index * 0.1}>
-                <div className={`${styles.teamCard} ${styles.caCard}`}>
-                  <div className={`${styles.teamPhoto} ${styles.caPhoto}`}>
+        {/* Équipe Grid */}
+        {equipeMembers.length > 0 && (
+          <div className={styles.teamGrid}>
+            {equipeMembers.map((member, index) => (
+              <ScrollReveal key={member.id} delay={index * 0.1}>
+                <div className={styles.teamCard}>
+                  <div className={styles.teamPhoto}>
                     {member.photo ? (
                       <Image
                         src={member.photo}
-                        alt={member.name}
+                        alt={member.nom}
                         fill
-                        sizes="100px"
+                        sizes="150px"
                       />
                     ) : (
                       <span className={styles.photoPlaceholder}>Photo</span>
                     )}
                   </div>
-                  <h4>{member.name}</h4>
-                  <p className={styles.teamRole}>{member.role}</p>
+                  <h3>{member.nom}</h3>
+                  <p className={styles.teamRole}>{member.fonction}</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
-        </div>
+        )}
+
+        {/* CA Section - Same card style */}
+        {caMembers.length > 0 && (
+          <div className={styles.caSection}>
+            <h3 className={styles.caTitle}>Conseil d&apos;Administration</h3>
+            <div className={styles.teamGrid}>
+              {caMembers.map((member, index) => (
+                <ScrollReveal key={member.id} delay={index * 0.1}>
+                  <div className={styles.teamCard}>
+                    <div className={styles.teamPhoto}>
+                      {member.photo ? (
+                        <Image
+                          src={member.photo}
+                          alt={member.nom}
+                          fill
+                          sizes="150px"
+                        />
+                      ) : (
+                        <span className={styles.photoPlaceholder}>Photo</span>
+                      )}
+                    </div>
+                    <h3>{member.nom}</h3>
+                    <p className={styles.teamRole}>{member.fonction}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Empty state if no members */}
+        {members.length === 0 && (
+          <div className={styles.sectionHeader}>
+            <p>L&apos;équipe sera bientôt présentée ici.</p>
+          </div>
+        )}
       </Container>
     </Section>
   )

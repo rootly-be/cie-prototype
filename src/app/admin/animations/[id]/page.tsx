@@ -3,8 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input, Textarea, Select } from '@/components/ui'
-import { ContentPreview } from '@/components/admin'
-import { NIVEAUX_OPTIONS } from '@/lib/constants/niveaux'
+import { ContentPreview, ImageUpload } from '@/components/admin'
 import styles from '../../admin.module.css'
 
 interface Category {
@@ -17,6 +16,18 @@ interface Tag {
   nom: string
 }
 
+interface Niveau {
+  id: string
+  code: string
+  label: string
+}
+
+interface UploadedImage {
+  id: string
+  url: string
+  alt: string | null
+}
+
 interface Animation {
   id: string
   titre: string
@@ -26,6 +37,7 @@ interface Animation {
   categorieId: string
   categorie: Category
   tags: Tag[]
+  images: UploadedImage[]
 }
 
 /**
@@ -45,6 +57,7 @@ export default function EditAnimationPage({
   const [saving, setSaving] = useState(false)
   const [categories, setCategories] = useState<Category[]>([])
   const [tags, setTags] = useState<Tag[]>([])
+  const [niveaux, setNiveaux] = useState<Niveau[]>([])
   const [notFound, setNotFound] = useState(false)
 
   // Form state
@@ -54,6 +67,7 @@ export default function EditAnimationPage({
   const [categorieId, setCategorieId] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [published, setPublished] = useState(false)
+  const [images, setImages] = useState<UploadedImage[]>([])
 
   // Errors
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -64,10 +78,12 @@ export default function EditAnimationPage({
       fetch(`/api/admin/animations/${id}`).then((r) => r.json()),
       fetch('/api/admin/categories?type=animation').then((r) => r.json()),
       fetch('/api/admin/tags').then((r) => r.json()),
+      fetch('/api/admin/niveaux').then((r) => r.json()),
     ])
-      .then(([animData, catData, tagData]) => {
+      .then(([animData, catData, tagData, nivData]) => {
         if (catData.data) setCategories(catData.data)
         if (tagData.data) setTags(tagData.data)
+        if (nivData.data) setNiveaux(nivData.data)
 
         if (animData.data) {
           const animation: Animation = animData.data
@@ -77,6 +93,7 @@ export default function EditAnimationPage({
           setCategorieId(animation.categorieId)
           setSelectedTags(animation.tags.map((t) => t.id))
           setPublished(animation.published)
+          setImages(animation.images || [])
         } else {
           setNotFound(true)
         }
@@ -132,6 +149,7 @@ export default function EditAnimationPage({
           niveau,
           categorieId,
           tagIds: selectedTags,
+          imageIds: images.map((img) => img.id),
           published,
         }),
       })
@@ -219,7 +237,7 @@ export default function EditAnimationPage({
                 label="Niveau scolaire"
                 value={niveau}
                 onChange={(e) => setNiveau(e.target.value)}
-                options={[...NIVEAUX_OPTIONS]}
+                options={niveaux.map((n) => ({ value: n.code, label: n.label }))}
                 placeholder="Sélectionnez un niveau"
                 error={errors.niveau}
                 required
@@ -258,6 +276,17 @@ export default function EditAnimationPage({
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className={styles.formSection}>
+              <h2 className={styles.formSectionTitle}>Images</h2>
+              <ImageUpload
+                entityType="animation"
+                entityId={id}
+                images={images}
+                onImagesChange={setImages}
+                maxImages={5}
+              />
             </div>
 
             <div className={styles.formSection}>

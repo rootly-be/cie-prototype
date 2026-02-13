@@ -171,7 +171,7 @@ export async function PUT(
 
 /**
  * DELETE /api/admin/animations/[id]
- * Soft-delete an animation (set published = false)
+ * Permanently delete an animation
  * Story 3.2: FR1, FR38 (audit logging)
  */
 export async function DELETE(
@@ -190,13 +190,22 @@ export async function DELETE(
       )
     }
 
-    // Soft-delete: set published = false
-    const animation = await prisma.animation.update({
+    // Get animation data for audit log before deletion
+    const animation = await prisma.animation.findUnique({
       where: { id },
-      data: {
-        published: false,
-        updatedById: admin.adminId
-      }
+      select: { id: true, titre: true }
+    })
+
+    if (!animation) {
+      return NextResponse.json(
+        { error: { code: ERROR_CODES.NOT_FOUND, message: 'Animation non trouvée' } },
+        { status: 404 }
+      )
+    }
+
+    // Delete the animation permanently
+    await prisma.animation.delete({
+      where: { id }
     })
 
     // FR38: Audit logging

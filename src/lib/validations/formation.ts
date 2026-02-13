@@ -24,6 +24,10 @@ export const formationCreateSchema = z.object({
     .min(10, 'La description doit contenir au moins 10 caractères')
     .max(5000, 'La description ne peut pas dépasser 5000 caractères'),
   categorieId: z.string().cuid('ID de catégorie invalide'),
+  billetwebUrl: z.string().url('URL invalide').nullable().optional(),
+  billetwebId: z.string().nullable().optional(),
+  placesTotal: z.number().int().nonnegative().nullable().optional(),
+  placesLeft: z.number().int().nonnegative().nullable().optional(),
   isFull: z.boolean().default(false),
   published: z.boolean().default(false),
   // Relations (optional arrays of IDs)
@@ -42,6 +46,10 @@ export const formationUpdateSchema = z.object({
   titre: z.string().min(3).max(100).optional(),
   description: z.string().min(10).max(5000).optional(),
   categorieId: z.string().cuid().optional(),
+  billetwebUrl: z.string().url().nullable().optional(),
+  billetwebId: z.string().nullable().optional(),
+  placesTotal: z.number().int().nonnegative().nullable().optional(),
+  placesLeft: z.number().int().nonnegative().nullable().optional(),
   isFull: z.boolean().optional(),
   published: z.boolean().optional(),
   tagIds: z.array(z.string().cuid()).optional(),

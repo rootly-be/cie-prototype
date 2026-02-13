@@ -19,6 +19,7 @@ const defaultLinks: NavLink[] = [
   { href: '/', label: 'Accueil' },
   { href: '/cie', label: 'Le CIE' },
   { href: '/animations', label: 'Animations' },
+  { href: '/formations', label: 'Formations' },
   { href: '/stages', label: 'Stages' },
   { href: '/agenda', label: 'Agenda' },
   { href: '/contact', label: 'Contact' },

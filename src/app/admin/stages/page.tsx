@@ -146,6 +146,9 @@ export default function StagesListPage() {
       <div className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Stages</h1>
         <div className={styles.pageActions}>
+          <Link href="/admin/stages/categories">
+            <Button variant="outline">Catégories</Button>
+          </Link>
           <Link href="/admin/stages/new">
             <Button variant="primary">+ Nouveau stage</Button>
           </Link>

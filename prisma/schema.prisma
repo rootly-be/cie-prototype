@@ -227,6 +227,18 @@ model Category {
   @@index([type])
 }
 
+/// School levels for animations
+/// Allows dynamic management of school levels
+model Niveau {
+  id        String   @id @default(cuid())
+  code      String   @unique  // e.g., 'M1', 'P1-P2'
+  label     String             // e.g., 'Maternelle 1', 'Primaire 1-2'
+  ordre     Int      @default(0)  // For sorting
+  createdAt DateTime @default(now())
+
+  @@index([ordre])
+}
+
 /// Tags for cross-entity filtering
 /// FR8, FR9, FR27: Manage tags with colors, cross-entity usage
 model Tag {
@@ -242,6 +254,22 @@ model Tag {
   agendaEvents AgendaEvent[] @relation("AgendaEventTags")
 
   @@index([nom])
+}
+
+/// Team members for "Qui sommes nous" section
+/// Managed from admin panel
+model TeamMember {
+  id        String   @id @default(cuid())
+  nom       String
+  fonction  String
+  photo     String?  // URL to photo
+  type      String   // 'equipe' or 'ca' (conseil d'administration)
+  ordre     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type])
+  @@index([ordre])
 }
 
 /// Images stored in Hetzner S3

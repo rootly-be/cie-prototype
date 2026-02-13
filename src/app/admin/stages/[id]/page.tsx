@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input, Textarea, Select } from '@/components/ui'
-import { ContentPreview } from '@/components/admin'
+import { ContentPreview, ImageUpload } from '@/components/admin'
 import styles from '../../admin.module.css'
 
 interface Category {
@@ -14,6 +14,12 @@ interface Category {
 interface Tag {
   id: string
   nom: string
+}
+
+interface UploadedImage {
+  id: string
+  url: string
+  alt: string | null
 }
 
 interface Stage {
@@ -32,6 +38,7 @@ interface Stage {
   published: boolean
   categorie: Category | null
   tags: Tag[]
+  images: UploadedImage[]
 }
 
 const PERIODES = [
@@ -72,6 +79,7 @@ export default function EditStagePage({
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isFull, setIsFull] = useState(false)
   const [published, setPublished] = useState(false)
+  const [images, setImages] = useState<UploadedImage[]>([])
 
   // Errors
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -102,6 +110,7 @@ export default function EditStagePage({
           setSelectedTags(stage.tags.map((t) => t.id))
           setIsFull(stage.isFull)
           setPublished(stage.published)
+          setImages(stage.images || [])
         } else {
           setNotFound(true)
         }
@@ -178,6 +187,7 @@ export default function EditStagePage({
           billetwebUrl: billetwebUrl || null,
           categorieId: categorieId || undefined,
           tagIds: selectedTags,
+          imageIds: images.map((img) => img.id),
           isFull,
           published,
         }),
@@ -371,6 +381,17 @@ export default function EditStagePage({
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className={styles.formSection}>
+              <h2 className={styles.formSectionTitle}>Images</h2>
+              <ImageUpload
+                entityType="stage"
+                entityId={id}
+                images={images}
+                onImagesChange={setImages}
+                maxImages={5}
+              />
             </div>
 
             <div className={styles.formSection}>

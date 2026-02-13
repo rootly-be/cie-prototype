@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getAdminFromRequest } from '@/lib/auth'
 import { stageUpdateSchema } from '@/lib/validations/stage'
+import { extractBilletwebId } from '@/lib/validations/billetweb'
 import { AUDIT_ACTIONS, ERROR_CODES } from '@/lib/constants'
 import { Prisma } from '@/generated/prisma/client'
 import { z } from 'zod'
@@ -75,6 +76,11 @@ export async function PUT(
     // Validate request body
     const body = await request.json()
     const validated = stageUpdateSchema.parse(body)
+
+    // Extract billetwebId from URL if URL provided but not ID
+    if (validated.billetwebUrl && !validated.billetwebId) {
+      validated.billetwebId = extractBilletwebId(validated.billetwebUrl) || undefined
+    }
 
     // Build update data (use any to allow custom transformations)
     const data: any = {
@@ -171,7 +177,7 @@ export async function PUT(
 
 /**
  * DELETE /api/admin/stages/[id]
- * Soft-delete a stage (set published = false)
+ * Permanently delete a stage
  * Story 3.4: FR3, FR38 (audit logging)
  */
 export async function DELETE(
@@ -190,13 +196,22 @@ export async function DELETE(
       )
     }
 
-    // Soft-delete: set published = false
-    const stage = await prisma.stage.update({
+    // Get stage data for audit log before deletion
+    const stage = await prisma.stage.findUnique({
       where: { id },
-      data: {
-        published: false,
-        updatedById: admin.adminId
-      }
+      select: { id: true, titre: true }
+    })
+
+    if (!stage) {
+      return NextResponse.json(
+        { error: { code: ERROR_CODES.NOT_FOUND, message: 'Stage non trouvé' } },
+        { status: 404 }
+      )
+    }
+
+    // Delete the stage permanently
+    await prisma.stage.delete({
+      where: { id }
     })
 
     // FR38: Audit logging

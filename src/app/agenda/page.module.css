@@ -1,0 +1,266 @@
+/**
+ * Agenda Page Styles
+ * Based on cie4/style.css prototype
+ */
+
+.agendaSection {
+  padding-top: 20px;
+}
+
+/* =========================================
+   FILTERS
+   ========================================= */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1px solid var(--border-main);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--text-main);
+  transition: 0.3s;
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.filterBtn:hover,
+.filterBtn.active {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  border-color: var(--color-primary);
+}
+
+/* =========================================
+   AGENDA LIST
+   ========================================= */
+.agendaList {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* =========================================
+   MONTH HEADING
+   ========================================= */
+.monthHeadingWrapper {
+  padding: 0 30px;
+  margin-top: 20px;
+}
+
+.monthHeadingWrapper:first-child {
+  margin-top: 0;
+}
+
+.monthHeading {
+  margin: 40px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-icon);
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: var(--text-xl);
+}
+
+/* =========================================
+   AGENDA ITEM
+   ========================================= */
+.agendaItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  gap: 30px;
+  border-bottom: 1px solid var(--border-main);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.agendaItem:last-child {
+  border-bottom: none;
+}
+
+.agendaItem:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  transform: translateX(4px);
+}
+
+/* =========================================
+   DATE BOX
+   ========================================= */
+.dateBox {
+  background: var(--L-ecorce);
+  color: white;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  min-width: 70px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode adjustment */
+:global(html.dark-mode) .dateBox {
+  background: #8d5524;
+  opacity: 0.9;
+}
+
+.agendaItem:hover .dateBox {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.day {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.month {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   EVENT INFO
+   ========================================= */
+.eventInfo {
+  flex: 1;
+}
+
+.eventInfo h3 {
+  font-size: var(--text-xl);
+  margin-bottom: 5px;
+  color: var(--color-primary);
+}
+
+.eventInfo p {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.time::before {
+  content: '🕐';
+  margin-right: 5px;
+}
+
+.location::before {
+  content: '📍';
+  margin-right: 5px;
+}
+
+.eventTag {
+  display: inline-block;
+  background: rgba(128, 128, 128, 0.1);
+  color: var(--color-icon);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: var(--text-xs);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+.btnOutline {
+  display: inline-block;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.3s;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.btnOutline:hover {
+  background: var(--color-primary);
+  color: var(--bg-body);
+}
+
+.btnOutline.disabled {
+  border-color: var(--border-main);
+  color: var(--text-muted);
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================================
+   PAGINATION
+   ========================================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-main);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.emptyState p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.emptyState p:first-child {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .agendaItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .agendaItem .btnOutline {
+    align-self: flex-end;
+  }
+
+  .filters {
+    gap: 8px;
+  }
+
+  .filterBtn {
+    padding: 6px 16px;
+    font-size: var(--text-xs);
+  }
+}

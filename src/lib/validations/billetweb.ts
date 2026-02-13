@@ -60,3 +60,42 @@ export const cacheEntrySchema = z.object({
 })
 
 export type CacheEntry = z.infer<typeof cacheEntrySchema>
+
+/**
+ * Extract billetwebId from a Billetweb URL
+ * URL formats:
+ * - https://www.billetweb.fr/mon-evenement
+ * - https://billetweb.fr/mon-evenement
+ * - https://www.billetweb.fr/mon-evenement?param=value
+ *
+ * @param url The Billetweb URL
+ * @returns The event ID (slug) or null if invalid
+ */
+export function extractBilletwebId(url: string | null | undefined): string | null {
+  if (!url) return null
+
+  try {
+    const parsed = new URL(url)
+
+    // Check if it's a billetweb.fr domain
+    if (!parsed.hostname.includes('billetweb.fr')) {
+      return null
+    }
+
+    // Get the path and extract the event slug
+    // Path is like /mon-evenement or /mon-evenement/
+    const path = parsed.pathname.replace(/^\/+|\/+$/g, '') // Remove leading/trailing slashes
+
+    if (!path) return null
+
+    // The path might have multiple segments, we want the first one (event slug)
+    const segments = path.split('/')
+    const eventSlug = segments[0]
+
+    return eventSlug || null
+  } catch {
+    // If URL parsing fails, try a simple regex extraction
+    const match = url.match(/billetweb\.fr\/([a-zA-Z0-9_-]+)/)
+    return match ? match[1] : null
+  }
+}

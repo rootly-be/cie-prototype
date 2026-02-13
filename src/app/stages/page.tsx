@@ -55,21 +55,21 @@ export default async function StagesPage({ searchParams }: PageProps) {
   // Parse age group to get min/max
   const ageFilter = ageGroup ? AGE_GROUPS.find((g) => g.value === ageGroup) : undefined
 
-  // Build filter config
+  // Build filter config (période à gauche, âges à droite)
   const filters: FilterConfig[] = [
-    {
-      id: 'age',
-      label: 'Tranche d\'âge',
-      type: 'chips',
-      options: AGE_GROUPS.map((g) => ({ value: g.value, label: g.label })),
-      allLabel: 'Tous âges',
-    },
     {
       id: 'periode',
       label: 'Période',
       type: 'select',
       options: PERIODES,
       allLabel: 'Toutes les périodes',
+    },
+    {
+      id: 'age',
+      label: 'Tranche d\'âge',
+      type: 'chips',
+      options: AGE_GROUPS.map((g) => ({ value: g.value, label: g.label })),
+      allLabel: 'Tous âges',
     },
   ]
 

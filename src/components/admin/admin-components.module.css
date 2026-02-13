@@ -308,3 +308,12 @@
 .imagePreviewItem:hover .imagePreviewRemove {
   opacity: 1;
 }
+
+.uploadError {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(197, 48, 48, 0.1);
+  border-radius: var(--radius-sm);
+}

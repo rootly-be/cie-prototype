@@ -7,7 +7,6 @@ import styles from './ContactForm.module.css'
 const subjectOptions = [
   { value: 'general', label: 'Renseignement général' },
   { value: 'scolaire', label: 'Inscription Scolaire' },
-  { value: 'stage', label: 'Inscription Stage' },
   { value: 'autre', label: 'Autre' },
 ]
 

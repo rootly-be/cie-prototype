@@ -4,7 +4,6 @@ import {
   Presentation,
   AgendaPreview,
   ActivitiesGrid,
-  IdeasBox,
   ContactSection,
 } from '@/components/sections'
 
@@ -71,9 +70,6 @@ export default async function HomePage() {
 
       {/* Activities Grid - AC4 */}
       <ActivitiesGrid />
-
-      {/* Ideas Box - AC4 */}
-      <IdeasBox />
 
       {/* Contact Section - AC4 */}
       <ContactSection />

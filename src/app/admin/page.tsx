@@ -103,6 +103,10 @@ export default async function AdminDashboard() {
             <span className={styles.quickActionIcon}>➕</span>
             <span>Nouveau stage</span>
           </Link>
+          <Link href="/admin/team" className={styles.quickAction}>
+            <span className={styles.quickActionIcon}>👥</span>
+            <span>Gérer l&apos;équipe</span>
+          </Link>
         </div>
       </div>
     </div>
